@@ -5,8 +5,10 @@ this is an airflow DAG used to collect MLB data everyday and created an API to d
 ## project goal and tools
 Comprison:
 Project comprises three segement, including parsing data from MLB website, committing data to database and demonstrating data via API. 
+
 Tools: 
 Airflow, Docker and postgresql are used to collect data and send to database
+
 Goals:
 Eventually, I wish to train these data collected day by day to build a model used to predict MVP（Most Valueable Player）, which I had completed a [similar thing](https://medium.com/@andy.hsu871226/%E9%81%8B%E7%94%A8%E9%82%8F%E8%BC%AF%E6%96%AF%E5%9B%9E%E6%AD%B8%E9%A0%90%E6%B8%ACnba%E5%B9%B4%E5%BA%A6%E5%89%8D%E4%B8%89%E9%9A%8A-8956cb6498ec) in the field of NBA（National Basketball Association）,of MLB（Major League Baseball）.
 
