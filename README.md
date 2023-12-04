@@ -20,6 +20,8 @@ ER model of these tables
 
 
 screenshot of each table(limit 10)
+
+
 <img width="562" alt="截圖 2023-12-04 下午12 56 07" src="https://github.com/DataTwins2023/MlbParserAirflow/assets/143244871/35756b30-8b23-459b-b3f1-6153d1cc80fe">
 
 team grade
