@@ -8,7 +8,7 @@ Tools: Airflow, Docker and postgresql are used to collect data and send to datab
 dag used to gain the data of players 
 
 ![截圖 2023-12-04 下午12 48 37](https://github.com/DataTwins2023/MlbParserAirflow/assets/143244871/50c9fc2c-8b79-4ca8-8209-629f69b956fd)
-
+dag to update team ranking and grade
 
 <img width="469" alt="截圖 2023-12-04 下午12 30 40" src="https://github.com/DataTwins2023/MlbParserAirflow/assets/143244871/ec12fefb-39b2-4b7f-86b8-9e4762d2cb51">
 
