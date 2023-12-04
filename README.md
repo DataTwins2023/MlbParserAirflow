@@ -1,8 +1,8 @@
 # MlbParserAirflow
-## description
-this is an airflow DAG used to collect MLB data everyday and created an API to demonstrate the data
+## Description
+For now, this is an airflow DAG used to collect MLB data everyday and created an API to demonstrate the data
 
-## project goal and tools
+## Project goal and tools
 Comprison:
 
 Project comprises three segement, including parsing data from MLB website, committing data to database and demonstrating data via API. 
@@ -30,7 +30,7 @@ table in the database storing data
 ER model of these tables
 
 
-## screenshot of each table(limit 10)
+## Screenshot of each table(limit 10)
 
 
 <img width="562" alt="截圖 2023-12-04 下午12 56 07" src="https://github.com/DataTwins2023/MlbParserAirflow/assets/143244871/35756b30-8b23-459b-b3f1-6153d1cc80fe">
