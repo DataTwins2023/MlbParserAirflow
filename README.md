@@ -8,7 +8,7 @@ For now, this is an airflow DAG used to collect MLB data everyday and created an
 ## Project goal and tools
 Comprison:
 
-Project comprises three segement, including parsing data from MLB website, committing data to database and demonstrating data via API. 
+Project comprises three segements, including parsing data from MLB website, committing data to database and demonstrating data via API. 
 
 Tools: 
 
