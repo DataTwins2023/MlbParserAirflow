@@ -1,0 +1,4 @@
+[2023-10-12T07:13:36.998+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: our_first_dag_v4.first_task scheduled__2023-10-05T00:00:00+00:00 [queued]>
+[2023-10-12T07:13:37.413+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: our_first_dag_v4.first_task scheduled__2023-10-05T00:00:00+00:00 [queued]>
+[2023-10-12T07:13:37.577+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 6
+[2023-10-12T07:13:40.496+0000] {taskinstance.py:1382} INFO - Executing <Task(BashOperator): first_task> on 2023-10-05 00:00:00+00:00

@@ -1,0 +1,41 @@
+[2023-09-12T06:51:01.613+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mlb_parser.get_max_hr manual__2023-09-12T06:50:40.275513+00:00 [queued]>
+[2023-09-12T06:51:01.619+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mlb_parser.get_max_hr manual__2023-09-12T06:50:40.275513+00:00 [queued]>
+[2023-09-12T06:51:01.619+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2023-09-12T06:51:01.626+0000] {taskinstance.py:1382} INFO - Executing <Task(PostgresOperator): get_max_hr> on 2023-09-12 06:50:40.275513+00:00
+[2023-09-12T06:51:01.631+0000] {standard_task_runner.py:57} INFO - Started process 73707 to run task
+[2023-09-12T06:51:01.634+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mlb_parser', 'get_max_hr', 'manual__2023-09-12T06:50:40.275513+00:00', '--job-id', '520', '--raw', '--subdir', 'DAGS_FOLDER/mlb_parser.py', '--cfg-path', '/tmp/tmpb5jeu5_j']
+[2023-09-12T06:51:01.636+0000] {standard_task_runner.py:85} INFO - Job 520: Subtask get_max_hr
+[2023-09-12T06:51:01.667+0000] {task_command.py:415} INFO - Running <TaskInstance: mlb_parser.get_max_hr manual__2023-09-12T06:50:40.275513+00:00 [running]> on host 2e8147b3a465
+[2023-09-12T06:51:01.715+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andy_hsu' AIRFLOW_CTX_DAG_ID='mlb_parser' AIRFLOW_CTX_TASK_ID='get_max_hr' AIRFLOW_CTX_EXECUTION_DATE='2023-09-12T06:50:40.275513+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-12T06:50:40.275513+00:00'
+[2023-09-12T06:51:01.717+0000] {sql.py:274} INFO - Executing: 
+            SELECT
+                "Name",
+                "H",
+                "AB",
+                CAST("H" AS float) / CAST("AB" AS float) AS "AVG"
+                FROM mlb_parser
+                WHERE "AB" > (
+                    SELECT AVG("AB") FROM mlb_parser
+                )
+                ORDER BY "AVG" DESC
+                LIMIT 10;
+            
+[2023-09-12T06:51:01.724+0000] {base.py:73} INFO - Using connection ID 'postgres_mlb_parser_DB' for task execution.
+[2023-09-12T06:51:01.731+0000] {base.py:73} INFO - Using connection ID 'postgres_mlb_parser_DB' for task execution.
+[2023-09-12T06:51:01.741+0000] {sql.py:418} INFO - Running statement: 
+            SELECT
+                "Name",
+                "H",
+                "AB",
+                CAST("H" AS float) / CAST("AB" AS float) AS "AVG"
+                FROM mlb_parser
+                WHERE "AB" > (
+                    SELECT AVG("AB") FROM mlb_parser
+                )
+                ORDER BY "AVG" DESC
+                LIMIT 10;
+            , parameters: None
+[2023-09-12T06:51:01.746+0000] {sql.py:427} INFO - Rows affected: 10
+[2023-09-12T06:51:01.762+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=mlb_parser, task_id=get_max_hr, execution_date=20230912T065040, start_date=20230912T065101, end_date=20230912T065101
+[2023-09-12T06:51:01.811+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-09-12T06:51:01.822+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,24 @@
+[2023-09-15T05:36:51.384+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mlb_parser.output_avg_df manual__2023-09-15T05:36:30.737673+00:00 [queued]>
+[2023-09-15T05:36:51.390+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mlb_parser.output_avg_df manual__2023-09-15T05:36:30.737673+00:00 [queued]>
+[2023-09-15T05:36:51.391+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2023-09-15T05:36:51.399+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): output_avg_df> on 2023-09-15 05:36:30.737673+00:00
+[2023-09-15T05:36:51.404+0000] {standard_task_runner.py:57} INFO - Started process 14921 to run task
+[2023-09-15T05:36:51.410+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mlb_parser', 'output_avg_df', 'manual__2023-09-15T05:36:30.737673+00:00', '--job-id', '670', '--raw', '--subdir', 'DAGS_FOLDER/mlb_parser.py', '--cfg-path', '/tmp/tmpehgen1pr']
+[2023-09-15T05:36:51.414+0000] {standard_task_runner.py:85} INFO - Job 670: Subtask output_avg_df
+[2023-09-15T05:36:51.490+0000] {task_command.py:415} INFO - Running <TaskInstance: mlb_parser.output_avg_df manual__2023-09-15T05:36:30.737673+00:00 [running]> on host 2e8147b3a465
+[2023-09-15T05:36:51.591+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andy_hsu' AIRFLOW_CTX_DAG_ID='mlb_parser' AIRFLOW_CTX_TASK_ID='output_avg_df' AIRFLOW_CTX_EXECUTION_DATE='2023-09-15T05:36:30.737673+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-15T05:36:30.737673+00:00'
+[2023-09-15T05:36:51.640+0000] {logging_mixin.py:151} INFO -                  0    1    2         3
+0      Luis Arraez  191  548  0.348540
+1     Corey Seager  143  416  0.343750
+2  Freddie Freeman  194  575  0.337391
+3     Ronald Acuna  199  594  0.335017
+4       Yandy Diaz  158  489  0.323108
+5   Cody Bellinger  141  446  0.316143
+6     Mookie Betts  165  529  0.311909
+7      Jose Altuve   91  295  0.308475
+8      Bo Bichette  156  507  0.307692
+9      Josh Naylor  121  396  0.305556
+[2023-09-15T05:36:51.642+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-09-15T05:36:51.691+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=mlb_parser, task_id=output_avg_df, execution_date=20230915T053630, start_date=20230915T053651, end_date=20230915T053651
+[2023-09-15T05:36:51.764+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-09-15T05:36:51.797+0000] {taskinstance.py:2784} INFO - 1 downstream tasks scheduled from follow-on schedule check

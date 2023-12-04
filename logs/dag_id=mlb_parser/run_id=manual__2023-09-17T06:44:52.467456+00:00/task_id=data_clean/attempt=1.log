@@ -1,0 +1,44 @@
+[2023-09-17T06:44:55.858+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mlb_parser.data_clean manual__2023-09-17T06:44:52.467456+00:00 [queued]>
+[2023-09-17T06:44:55.864+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mlb_parser.data_clean manual__2023-09-17T06:44:52.467456+00:00 [queued]>
+[2023-09-17T06:44:55.865+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2023-09-17T06:44:55.872+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): data_clean> on 2023-09-17 06:44:52.467456+00:00
+[2023-09-17T06:44:55.877+0000] {standard_task_runner.py:57} INFO - Started process 5288 to run task
+[2023-09-17T06:44:55.879+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mlb_parser', 'data_clean', 'manual__2023-09-17T06:44:52.467456+00:00', '--job-id', '989', '--raw', '--subdir', 'DAGS_FOLDER/mlb_parser.py', '--cfg-path', '/tmp/tmppjzpy58f']
+[2023-09-17T06:44:55.882+0000] {standard_task_runner.py:85} INFO - Job 989: Subtask data_clean
+[2023-09-17T06:44:55.919+0000] {task_command.py:415} INFO - Running <TaskInstance: mlb_parser.data_clean manual__2023-09-17T06:44:52.467456+00:00 [running]> on host 41ed285d8c3c
+[2023-09-17T06:44:55.993+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andy_hsu' AIRFLOW_CTX_DAG_ID='mlb_parser' AIRFLOW_CTX_TASK_ID='data_clean' AIRFLOW_CTX_EXECUTION_DATE='2023-09-17T06:44:52.467456+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-17T06:44:52.467456+00:00'
+[2023-09-17T06:44:56.002+0000] {logging_mixin.py:151} INFO - ['nationals', 'braves', 'mets', 'marlins', 'phillies', 'brewers', 'cubs', 'reds', 'pirates', 'cardinals', 'dodgers', 'giants', 'padres', 'rockies', 'dbacks', 'astros', 'angels', 'rangers', 'athletics', 'mariners', 'twins', 'guardians', 'tigers', 'whitesox', 'royals', 'orioles', 'rays', 'bluejays', 'redsox', 'yankees']
+[2023-09-17T06:44:56.003+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/nationals/stats/
+[2023-09-17T06:44:58.806+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/braves/stats/
+[2023-09-17T06:45:00.060+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/mets/stats/
+[2023-09-17T06:45:02.095+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/marlins/stats/
+[2023-09-17T06:45:03.437+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/phillies/stats/
+[2023-09-17T06:45:05.583+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/brewers/stats/
+[2023-09-17T06:45:07.889+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/cubs/stats/
+[2023-09-17T06:45:11.461+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/reds/stats/
+[2023-09-17T06:45:12.647+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/pirates/stats/
+[2023-09-17T06:45:14.802+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/cardinals/stats/
+[2023-09-17T06:45:17.551+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/dodgers/stats/
+[2023-09-17T06:45:21.235+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/giants/stats/
+[2023-09-17T06:45:23.813+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/padres/stats/
+[2023-09-17T06:45:25.205+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/rockies/stats/
+[2023-09-17T06:45:27.082+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/dbacks/stats/
+[2023-09-17T06:45:29.547+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/astros/stats/
+[2023-09-17T06:45:31.333+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/angels/stats/
+[2023-09-17T06:45:32.639+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/rangers/stats/
+[2023-09-17T06:45:36.235+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/athletics/stats/
+[2023-09-17T06:45:39.385+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/mariners/stats/
+[2023-09-17T06:45:40.685+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/twins/stats/
+[2023-09-17T06:45:41.539+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/guardians/stats/
+[2023-09-17T06:45:43.073+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/tigers/stats/
+[2023-09-17T06:45:45.950+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/whitesox/stats/
+[2023-09-17T06:45:47.132+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/royals/stats/
+[2023-09-17T06:45:51.242+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/orioles/stats/
+[2023-09-17T06:45:53.536+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/rays/stats/
+[2023-09-17T06:45:55.642+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/bluejays/stats/
+[2023-09-17T06:45:57.531+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/redsox/stats/
+[2023-09-17T06:45:58.913+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/yankees/stats/
+[2023-09-17T06:46:00.358+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-09-17T06:46:00.365+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=mlb_parser, task_id=data_clean, execution_date=20230917T064452, start_date=20230917T064455, end_date=20230917T064600
+[2023-09-17T06:46:00.418+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-09-17T06:46:00.433+0000] {taskinstance.py:2784} INFO - 2 downstream tasks scheduled from follow-on schedule check

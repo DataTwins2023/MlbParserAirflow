@@ -1,0 +1,27 @@
+[2023-09-15T15:31:01.200+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mlb_parser.output_avg_df manual__2023-09-15T15:29:37.109992+00:00 [queued]>
+[2023-09-15T15:31:01.206+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mlb_parser.output_avg_df manual__2023-09-15T15:29:37.109992+00:00 [queued]>
+[2023-09-15T15:31:01.208+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2023-09-15T15:31:01.217+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): output_avg_df> on 2023-09-15 15:29:37.109992+00:00
+[2023-09-15T15:31:01.222+0000] {standard_task_runner.py:57} INFO - Started process 41509 to run task
+[2023-09-15T15:31:01.225+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mlb_parser', 'output_avg_df', 'manual__2023-09-15T15:29:37.109992+00:00', '--job-id', '824', '--raw', '--subdir', 'DAGS_FOLDER/mlb_parser.py', '--cfg-path', '/tmp/tmp75wc1zxz']
+[2023-09-15T15:31:01.228+0000] {standard_task_runner.py:85} INFO - Job 824: Subtask output_avg_df
+[2023-09-15T15:31:01.269+0000] {task_command.py:415} INFO - Running <TaskInstance: mlb_parser.output_avg_df manual__2023-09-15T15:29:37.109992+00:00 [running]> on host 2e8147b3a465
+[2023-09-15T15:31:01.335+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andy_hsu' AIRFLOW_CTX_DAG_ID='mlb_parser' AIRFLOW_CTX_TASK_ID='output_avg_df' AIRFLOW_CTX_EXECUTION_DATE='2023-09-15T15:29:37.109992+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-15T15:29:37.109992+00:00'
+[2023-09-15T15:31:01.351+0000] {logging_mixin.py:151} INFO - [['Luis Arraez', '2B', 'MIA', 140, 548, 191, 35, 34, 0.39, 0.453, 0.34854014598540145, datetime.date(2023, 9, 15)], ['Corey Seager', 'SS', 'TEX', 103, 416, 143, 46, 77, 0.406, 0.663, 0.34375, datetime.date(2023, 9, 15)], ['Freddie Freeman', '1B', 'LAD', 145, 575, 194, 68, 110, 0.414, 0.576, 0.3373913043478261, datetime.date(2023, 9, 15)], ['Ronald Acuna', 'RF', 'ATL', 146, 594, 199, 77, 78, 0.416, 0.586, 0.335016835016835, datetime.date(2023, 9, 15)], ['Yandy Diaz', '1B', 'TB', 126, 489, 158, 59, 88, 0.402, 0.509, 0.3231083844580777, datetime.date(2023, 9, 15)], ['Cody Bellinger', 'CF', 'CHC', 116, 446, 141, 32, 79, 0.358, 0.545, 0.31614349775784756, datetime.date(2023, 9, 15)], ['Mookie Betts', 'RF', 'LAD', 137, 529, 165, 86, 98, 0.412, 0.607, 0.31190926275992437, datetime.date(2023, 9, 15)], ['Jose Altuve', '2B', 'HOU', 75, 295, 91, 40, 58, 0.397, 0.539, 0.30847457627118646, datetime.date(2023, 9, 15)], ['Bo Bichette', 'SS', 'TOR', 120, 507, 156, 22, 98, 0.339, 0.477, 0.3076923076923077, datetime.date(2023, 9, 15)], ['Josh Naylor', '1B', 'CLE', 106, 396, 121, 27, 60, 0.347, 0.503, 0.3055555555555556, datetime.date(2023, 9, 15)]]
+[2023-09-15T15:31:01.369+0000] {logging_mixin.py:151} INFO -                 0   1    2    3    4   ...   7      8      9         10          11
+0      Luis Arraez  2B  MIA  140  548  ...   34  0.390  0.453  0.348540  2023-09-15
+1     Corey Seager  SS  TEX  103  416  ...   77  0.406  0.663  0.343750  2023-09-15
+2  Freddie Freeman  1B  LAD  145  575  ...  110  0.414  0.576  0.337391  2023-09-15
+3     Ronald Acuna  RF  ATL  146  594  ...   78  0.416  0.586  0.335017  2023-09-15
+4       Yandy Diaz  1B   TB  126  489  ...   88  0.402  0.509  0.323108  2023-09-15
+5   Cody Bellinger  CF  CHC  116  446  ...   79  0.358  0.545  0.316143  2023-09-15
+6     Mookie Betts  RF  LAD  137  529  ...   98  0.412  0.607  0.311909  2023-09-15
+7      Jose Altuve  2B  HOU   75  295  ...   58  0.397  0.539  0.308475  2023-09-15
+8      Bo Bichette  SS  TOR  120  507  ...   98  0.339  0.477  0.307692  2023-09-15
+9      Josh Naylor  1B  CLE  106  396  ...   60  0.347  0.503  0.305556  2023-09-15
+
+[10 rows x 12 columns]
+[2023-09-15T15:31:01.372+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-09-15T15:31:01.381+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=mlb_parser, task_id=output_avg_df, execution_date=20230915T152937, start_date=20230915T153101, end_date=20230915T153101
+[2023-09-15T15:31:01.438+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-09-15T15:31:01.462+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check

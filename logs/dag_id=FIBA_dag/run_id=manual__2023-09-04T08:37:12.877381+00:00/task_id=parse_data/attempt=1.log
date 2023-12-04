@@ -1,0 +1,77 @@
+[2023-09-04T08:37:27.200+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: FIBA_dag.parse_data manual__2023-09-04T08:37:12.877381+00:00 [queued]>
+[2023-09-04T08:37:27.205+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: FIBA_dag.parse_data manual__2023-09-04T08:37:12.877381+00:00 [queued]>
+[2023-09-04T08:37:27.206+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 6
+[2023-09-04T08:37:27.213+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): parse_data> on 2023-09-04 08:37:12.877381+00:00
+[2023-09-04T08:37:27.217+0000] {standard_task_runner.py:57} INFO - Started process 5045 to run task
+[2023-09-04T08:37:27.219+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'FIBA_dag', 'parse_data', 'manual__2023-09-04T08:37:12.877381+00:00', '--job-id', '110', '--raw', '--subdir', 'DAGS_FOLDER/FIBA.py', '--cfg-path', '/tmp/tmpk8w_cuju']
+[2023-09-04T08:37:27.222+0000] {standard_task_runner.py:85} INFO - Job 110: Subtask parse_data
+[2023-09-04T08:37:27.251+0000] {task_command.py:415} INFO - Running <TaskInstance: FIBA_dag.parse_data manual__2023-09-04T08:37:12.877381+00:00 [running]> on host ad6c67079ac6
+[2023-09-04T08:37:27.291+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andy_hsu' AIRFLOW_CTX_DAG_ID='FIBA_dag' AIRFLOW_CTX_TASK_ID='parse_data' AIRFLOW_CTX_EXECUTION_DATE='2023-09-04T08:37:12.877381+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-04T08:37:12.877381+00:00'
+[2023-09-04T08:37:27.532+0000] {logging_mixin.py:151} INFO - left_part: A
+[2023-09-04T08:37:27.533+0000] {logging_mixin.py:151} INFO - right_part: G
+[2023-09-04T08:37:27.534+0000] {logging_mixin.py:151} INFO - left_point: <span>
+                                        100
+                                    </span>
+[2023-09-04T08:37:27.535+0000] {logging_mixin.py:151} INFO - right_point: <span>
+                                        84
+                                    </span>
+[2023-09-04T08:37:27.536+0000] {logging_mixin.py:151} INFO - left_part: I
+[2023-09-04T08:37:27.536+0000] {logging_mixin.py:151} INFO - right_part: P
+[2023-09-04T08:37:27.537+0000] {logging_mixin.py:151} INFO - left_point: <span>
+                                        73
+                                    </span>
+[2023-09-04T08:37:27.538+0000] {logging_mixin.py:151} INFO - right_point: <span>
+                                        57
+                                    </span>
+[2023-09-04T08:37:27.539+0000] {logging_mixin.py:151} INFO - left_part: G
+[2023-09-04T08:37:27.540+0000] {logging_mixin.py:151} INFO - right_part: M
+[2023-09-04T08:37:27.541+0000] {logging_mixin.py:151} INFO - left_point: <span>
+                                        69
+                                    </span>
+[2023-09-04T08:37:27.541+0000] {logging_mixin.py:151} INFO - right_point: <span>
+                                        73
+                                    </span>
+[2023-09-04T08:37:27.542+0000] {logging_mixin.py:151} INFO - left_part: B
+[2023-09-04T08:37:27.543+0000] {logging_mixin.py:151} INFO - right_part: L
+[2023-09-04T08:37:27.544+0000] {logging_mixin.py:151} INFO - left_point: <span>
+                                        84
+                                    </span>
+[2023-09-04T08:37:27.545+0000] {logging_mixin.py:151} INFO - right_point: <span>
+                                        104
+                                    </span>
+[2023-09-04T08:37:27.546+0000] {logging_mixin.py:151} INFO - left_part: G
+[2023-09-04T08:37:27.546+0000] {logging_mixin.py:151} INFO - right_part: S
+[2023-09-04T08:37:27.547+0000] {logging_mixin.py:151} INFO - left_point: <span>
+                                        100
+                                    </span>
+[2023-09-04T08:37:27.548+0000] {logging_mixin.py:151} INFO - right_point: <span>
+                                        71
+                                    </span>
+[2023-09-04T08:37:27.549+0000] {logging_mixin.py:151} INFO - left_part: D
+[2023-09-04T08:37:27.551+0000] {logging_mixin.py:151} INFO - right_part: S
+[2023-09-04T08:37:27.551+0000] {logging_mixin.py:151} INFO - left_point: <span>
+                                        79
+                                    </span>
+[2023-09-04T08:37:27.552+0000] {logging_mixin.py:151} INFO - right_point: <span>
+                                        112
+                                    </span>
+[2023-09-04T08:37:27.553+0000] {logging_mixin.py:151} INFO - left_part: U
+[2023-09-04T08:37:27.554+0000] {logging_mixin.py:151} INFO - right_part: L
+[2023-09-04T08:37:27.555+0000] {logging_mixin.py:151} INFO - left_point: <span>
+                                        104
+                                    </span>
+[2023-09-04T08:37:27.555+0000] {logging_mixin.py:151} INFO - right_point: <span>
+                                        110
+                                    </span>
+[2023-09-04T08:37:27.556+0000] {logging_mixin.py:151} INFO - left_part: S
+[2023-09-04T08:37:27.557+0000] {logging_mixin.py:151} INFO - right_part: C
+[2023-09-04T08:37:27.558+0000] {logging_mixin.py:151} INFO - left_point: <span>
+                                        85
+                                    </span>
+[2023-09-04T08:37:27.558+0000] {logging_mixin.py:151} INFO - right_point: <span>
+                                        88
+                                    </span>
+[2023-09-04T08:37:27.559+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-09-04T08:37:27.565+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=FIBA_dag, task_id=parse_data, execution_date=20230904T083712, start_date=20230904T083727, end_date=20230904T083727
+[2023-09-04T08:37:27.634+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-09-04T08:37:27.657+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check

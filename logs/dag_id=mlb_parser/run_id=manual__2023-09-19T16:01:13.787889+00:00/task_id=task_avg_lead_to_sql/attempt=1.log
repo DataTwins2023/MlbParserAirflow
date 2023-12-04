@@ -1,0 +1,33 @@
+[2023-09-19T16:02:20.270+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mlb_parser.task_avg_lead_to_sql manual__2023-09-19T16:01:13.787889+00:00 [queued]>
+[2023-09-19T16:02:20.276+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mlb_parser.task_avg_lead_to_sql manual__2023-09-19T16:01:13.787889+00:00 [queued]>
+[2023-09-19T16:02:20.277+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2023-09-19T16:02:20.285+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): task_avg_lead_to_sql> on 2023-09-19 16:01:13.787889+00:00
+[2023-09-19T16:02:20.288+0000] {standard_task_runner.py:57} INFO - Started process 3481 to run task
+[2023-09-19T16:02:20.291+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mlb_parser', 'task_avg_lead_to_sql', 'manual__2023-09-19T16:01:13.787889+00:00', '--job-id', '1293', '--raw', '--subdir', 'DAGS_FOLDER/mlb_parser_hit.py', '--cfg-path', '/tmp/tmphx6pl0pi']
+[2023-09-19T16:02:20.294+0000] {standard_task_runner.py:85} INFO - Job 1293: Subtask task_avg_lead_to_sql
+[2023-09-19T16:02:20.324+0000] {task_command.py:415} INFO - Running <TaskInstance: mlb_parser.task_avg_lead_to_sql manual__2023-09-19T16:01:13.787889+00:00 [running]> on host d98c068596b4
+[2023-09-19T16:02:20.371+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andy_hsu' AIRFLOW_CTX_DAG_ID='mlb_parser' AIRFLOW_CTX_TASK_ID='task_avg_lead_to_sql' AIRFLOW_CTX_EXECUTION_DATE='2023-09-19T16:01:13.787889+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-19T16:01:13.787889+00:00'
+[2023-09-19T16:02:20.392+0000] {logging_mixin.py:151} INFO -               name pos team    g   ab  ...   so    obp    slg       avg  record_date
+0      Luis Arraez  2B  MIA  144  567  ...   34  0.394  0.471  0.354497   2023-09-19
+1     Ronald Acuna  RF  ATL  148  601  ...   78  0.417  0.586  0.336106   2023-09-19
+2  Freddie Freeman  1B  LAD  148  585  ...  112  0.414  0.569  0.335043   2023-09-19
+3     Corey Seager  SS  TEX  107  431  ...   80  0.396  0.645  0.334107   2023-09-19
+4       Yandy Diaz  1B   TB  129  501  ...   91  0.398  0.503  0.319361   2023-09-19
+5      Jose Altuve  2B  HOU   79  314  ...   60  0.396  0.548  0.312102   2023-09-19
+6   Cody Bellinger  CF  CHC  119  457  ...   81  0.356  0.534  0.310722   2023-09-19
+7      Josh Naylor  1B  CLE  110  412  ...   63  0.351  0.502  0.310680   2023-09-19
+8     Ryan O'Hearn  1B  BAL  100  307  ...   73  0.338  0.511  0.309446   2023-09-19
+9     Mookie Betts  RF  LAD  140  542  ...  103  0.409  0.596  0.308118   2023-09-19
+
+[10 rows x 12 columns]
+[2023-09-19T16:02:20.404+0000] {logging_mixin.py:151} INFO - An exception occurred: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "mlb_avg_lead_2023_pkey"
+DETAIL:  Key (name, pos, team, record_date)=(Luis Arraez, 2B, MIA, 2023-09-19) already exists.
+
+[SQL: INSERT INTO mlb_avg_lead_2023 (name, pos, team, g, ab, h, bb, so, obp, slg, avg, record_date) VALUES (%(name)s, %(pos)s, %(team)s, %(g)s, %(ab)s, %(h)s, %(bb)s, %(so)s, %(obp)s, %(slg)s, %(avg)s, %(record_date)s)]
+[parameters: ({'name': 'Luis Arraez', 'pos': '2B', 'team': 'MIA', 'g': 144, 'ab': 567, 'h': 201, 'bb': 35, 'so': 34, 'obp': 0.394, 'slg': 0.471, 'avg': 0.3544973544973545, 'record_date': datetime.date(2023, 9, 19)}, {'name': 'Ronald Acuna', 'pos': 'RF', 'team': 'ATL', 'g': 148, 'ab': 601, 'h': 202, 'bb': 78, 'so': 78, 'obp': 0.417, 'slg': 0.586, 'avg': 0.33610648918469216, 'record_date': datetime.date(2023, 9, 19)}, {'name': 'Freddie Freeman', 'pos': '1B', 'team': 'LAD', 'g': 148, 'ab': 585, 'h': 196, 'bb': 70, 'so': 112, 'obp': 0.414, 'slg': 0.569, 'avg': 0.335042735042735, 'record_date': datetime.date(2023, 9, 19)}, {'name': 'Corey Seager', 'pos': 'SS', 'team': 'TEX', 'g': 107, 'ab': 431, 'h': 144, 'bb': 46, 'so': 80, 'obp': 0.396, 'slg': 0.645, 'avg': 0.33410672853828305, 'record_date': datetime.date(2023, 9, 19)}, {'name': 'Yandy Diaz', 'pos': '1B', 'team': 'TB', 'g': 129, 'ab': 501, 'h': 160, 'bb': 60, 'so': 91, 'obp': 0.398, 'slg': 0.503, 'avg': 0.3193612774451098, 'record_date': datetime.date(2023, 9, 19)}, {'name': 'Jose Altuve', 'pos': '2B', 'team': 'HOU', 'g': 79, 'ab': 314, 'h': 98, 'bb': 40, 'so': 60, 'obp': 0.396, 'slg': 0.548, 'avg': 0.31210191082802546, 'record_date': datetime.date(2023, 9, 19)}, {'name': 'Cody Bellinger', 'pos': 'CF', 'team': 'CHC', 'g': 119, 'ab': 457, 'h': 142, 'bb': 34, 'so': 81, 'obp': 0.356, 'slg': 0.534, 'avg': 0.31072210065645517, 'record_date': datetime.date(2023, 9, 19)}, {'name': 'Josh Naylor', 'pos': '1B', 'team': 'CLE', 'g': 110, 'ab': 412, 'h': 128, 'bb': 28, 'so': 63, 'obp': 0.351, 'slg': 0.502, 'avg': 0.3106796116504854, 'record_date': datetime.date(2023, 9, 19)}, {'name': "Ryan O'Hearn", 'pos': '1B', 'team': 'BAL', 'g': 100, 'ab': 307, 'h': 95, 'bb': 13, 'so': 73, 'obp': 0.338, 'slg': 0.511, 'avg': 0.30944625407166126, 'record_date': datetime.date(2023, 9, 19)}, {'name': 'Mookie Betts', 'pos': 'RF', 'team': 'LAD', 'g': 140, 'ab': 542, 'h': 167, 'bb': 88, 'so': 103, 'obp': 0.409, 'slg': 0.596, 'avg': 0.3081180811808118, 'record_date': datetime.date(2023, 9, 19)})]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+[2023-09-19T16:02:20.406+0000] {logging_mixin.py:151} INFO - job done
+[2023-09-19T16:02:20.407+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-09-19T16:02:20.413+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=mlb_parser, task_id=task_avg_lead_to_sql, execution_date=20230919T160113, start_date=20230919T160220, end_date=20230919T160220
+[2023-09-19T16:02:20.463+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-09-19T16:02:20.475+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check

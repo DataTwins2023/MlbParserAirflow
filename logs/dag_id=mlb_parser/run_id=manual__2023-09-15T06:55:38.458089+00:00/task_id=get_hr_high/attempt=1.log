@@ -1,0 +1,51 @@
+[2023-09-15T06:56:07.959+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mlb_parser.get_hr_high manual__2023-09-15T06:55:38.458089+00:00 [queued]>
+[2023-09-15T06:56:07.967+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mlb_parser.get_hr_high manual__2023-09-15T06:55:38.458089+00:00 [queued]>
+[2023-09-15T06:56:07.968+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2023-09-15T06:56:07.981+0000] {taskinstance.py:1382} INFO - Executing <Task(PostgresOperator): get_hr_high> on 2023-09-15 06:55:38.458089+00:00
+[2023-09-15T06:56:07.991+0000] {standard_task_runner.py:57} INFO - Started process 21836 to run task
+[2023-09-15T06:56:07.994+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mlb_parser', 'get_hr_high', 'manual__2023-09-15T06:55:38.458089+00:00', '--job-id', '708', '--raw', '--subdir', 'DAGS_FOLDER/mlb_parser.py', '--cfg-path', '/tmp/tmpl2bxpd41']
+[2023-09-15T06:56:07.998+0000] {standard_task_runner.py:85} INFO - Job 708: Subtask get_hr_high
+[2023-09-15T06:56:08.039+0000] {task_command.py:415} INFO - Running <TaskInstance: mlb_parser.get_hr_high manual__2023-09-15T06:55:38.458089+00:00 [running]> on host 2e8147b3a465
+[2023-09-15T06:56:08.096+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andy_hsu' AIRFLOW_CTX_DAG_ID='mlb_parser' AIRFLOW_CTX_TASK_ID='get_hr_high' AIRFLOW_CTX_EXECUTION_DATE='2023-09-15T06:55:38.458089+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-15T06:55:38.458089+00:00'
+[2023-09-15T06:56:08.098+0000] {sql.py:274} INFO - Executing: 
+            SELECT
+                "Name",
+                "POS",
+                "Team",
+                "G",
+                "AB",
+                "HR",
+                "RBI",
+                "BB",
+                "SO",
+                "OBP",
+                "SLG",
+                CURRENT_DATE AS "date"
+                FROM mlb_data_2023
+                ORDER BY "HR" DESC
+                LIMIT 10;
+            
+[2023-09-15T06:56:08.106+0000] {base.py:73} INFO - Using connection ID 'postgres_mlb_parser_DB' for task execution.
+[2023-09-15T06:56:08.113+0000] {base.py:73} INFO - Using connection ID 'postgres_mlb_parser_DB' for task execution.
+[2023-09-15T06:56:08.125+0000] {sql.py:418} INFO - Running statement: 
+            SELECT
+                "Name",
+                "POS",
+                "Team",
+                "G",
+                "AB",
+                "HR",
+                "RBI",
+                "BB",
+                "SO",
+                "OBP",
+                "SLG",
+                CURRENT_DATE AS "date"
+                FROM mlb_data_2023
+                ORDER BY "HR" DESC
+                LIMIT 10;
+            , parameters: None
+[2023-09-15T06:56:08.130+0000] {sql.py:427} INFO - Rows affected: 10
+[2023-09-15T06:56:08.152+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=mlb_parser, task_id=get_hr_high, execution_date=20230915T065538, start_date=20230915T065607, end_date=20230915T065608
+[2023-09-15T06:56:08.170+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-09-15T06:56:08.187+0000] {taskinstance.py:2784} INFO - 1 downstream tasks scheduled from follow-on schedule check

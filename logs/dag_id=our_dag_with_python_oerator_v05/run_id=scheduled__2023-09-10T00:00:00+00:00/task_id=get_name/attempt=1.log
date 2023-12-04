@@ -1,0 +1,8 @@
+[2023-09-11T02:04:25.628+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: our_dag_with_python_oerator_v05.get_name scheduled__2023-09-10T00:00:00+00:00 [queued]>
+[2023-09-11T02:04:27.613+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: our_dag_with_python_oerator_v05.get_name scheduled__2023-09-10T00:00:00+00:00 [queued]>
+[2023-09-11T02:04:27.643+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 6
+[2023-09-11T02:04:27.855+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): get_name> on 2023-09-10 00:00:00+00:00
+[2023-09-11T02:04:27.878+0000] {standard_task_runner.py:57} INFO - Started process 235 to run task
+[2023-09-11T02:04:28.006+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'our_dag_with_python_oerator_v05', 'get_name', 'scheduled__2023-09-10T00:00:00+00:00', '--job-id', '215', '--raw', '--subdir', 'DAGS_FOLDER/create_dag_with_python_operator.py', '--cfg-path', '/tmp/tmpjuboegqn']
+[2023-09-11T02:04:28.221+0000] {standard_task_runner.py:85} INFO - Job 215: Subtask get_name
+[2023-09-11T02:04:37.858+0000] {local_task_job_runner.py:228} INFO - Task exited with return code -9

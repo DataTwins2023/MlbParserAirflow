@@ -1,0 +1,80 @@
+[2023-09-17T06:46:05.722+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mlb_parser.task_hr_lead_to_sql manual__2023-09-17T06:44:52.467456+00:00 [queued]>
+[2023-09-17T06:46:05.730+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mlb_parser.task_hr_lead_to_sql manual__2023-09-17T06:44:52.467456+00:00 [queued]>
+[2023-09-17T06:46:05.731+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2023-09-17T06:46:05.738+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): task_hr_lead_to_sql> on 2023-09-17 06:44:52.467456+00:00
+[2023-09-17T06:46:05.743+0000] {standard_task_runner.py:57} INFO - Started process 5396 to run task
+[2023-09-17T06:46:05.746+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mlb_parser', 'task_hr_lead_to_sql', 'manual__2023-09-17T06:44:52.467456+00:00', '--job-id', '996', '--raw', '--subdir', 'DAGS_FOLDER/mlb_parser.py', '--cfg-path', '/tmp/tmpypup7dix']
+[2023-09-17T06:46:05.749+0000] {standard_task_runner.py:85} INFO - Job 996: Subtask task_hr_lead_to_sql
+[2023-09-17T06:46:05.788+0000] {task_command.py:415} INFO - Running <TaskInstance: mlb_parser.task_hr_lead_to_sql manual__2023-09-17T06:44:52.467456+00:00 [running]> on host 41ed285d8c3c
+[2023-09-17T06:46:05.836+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andy_hsu' AIRFLOW_CTX_DAG_ID='mlb_parser' AIRFLOW_CTX_TASK_ID='task_hr_lead_to_sql' AIRFLOW_CTX_EXECUTION_DATE='2023-09-17T06:44:52.467456+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-17T06:44:52.467456+00:00'
+[2023-09-17T06:46:05.861+0000] {taskinstance.py:1943} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1890, in _execute_context
+    self.dialect.do_executemany(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 982, in do_executemany
+    context._psycopg2_fetched_rows = xtras.execute_values(
+  File "/home/airflow/.local/lib/python3.8/site-packages/psycopg2/extras.py", line 1299, in execute_values
+    cur.execute(b''.join(parts))
+psycopg2.errors.UndefinedColumn: column "Name" of relation "mlb_hr_lead_2023" does not exist
+LINE 1: INSERT INTO mlb_hr_lead_2023 (index, "Name", "POS", "Team", ...
+                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/mlb_parser.py", line 176, in hr_standing_to_sql
+    hr_data_df.to_sql(name='mlb_hr_lead_2023', con=engine, if_exists="append")
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/core/generic.py", line 2878, in to_sql
+    return sql.to_sql(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 769, in to_sql
+    return pandas_sql.to_sql(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 1920, in to_sql
+    total_inserted = sql_engine.insert_records(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 1470, in insert_records
+    raise err
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 1461, in insert_records
+    return table.insert(chunksize=chunksize, method=method)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 1023, in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 929, in _execute_insert
+    result = conn.execute(self.table.insert(), data)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1385, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1890, in _execute_context
+    self.dialect.do_executemany(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 982, in do_executemany
+    context._psycopg2_fetched_rows = xtras.execute_values(
+  File "/home/airflow/.local/lib/python3.8/site-packages/psycopg2/extras.py", line 1299, in execute_values
+    cur.execute(b''.join(parts))
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column "Name" of relation "mlb_hr_lead_2023" does not exist
+LINE 1: INSERT INTO mlb_hr_lead_2023 (index, "Name", "POS", "Team", ...
+                                             ^
+
+[SQL: INSERT INTO mlb_hr_lead_2023 (index, "Name", "POS", "Team", "G", "AB", "HR", "RBI", "BB", "SO", "OBP", "SLG", "Record_date") VALUES (%(index)s, %(Name)s, %(POS)s, %(Team)s, %(G)s, %(AB)s, %(HR)s, %(RBI)s, %(BB)s, %(SO)s, %(OBP)s, %(SLG)s, %(Record_date)s)]
+[parameters: ({'index': 0, 'Name': 'Matt Olson', 'POS': '1B', 'Team': 'ATL', 'G': 148, 'AB': 559, 'HR': 52, 'RBI': 129, 'BB': 96, 'SO': 157, 'OBP': 0.388, 'SLG': 0.617, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 1, 'Name': 'Pete Alonso', 'POS': '1B', 'Team': 'NYM', 'G': 140, 'AB': 512, 'HR': 45, 'RBI': 112, 'BB': 63, 'SO': 131, 'OBP': 0.329, 'SLG': 0.531, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 2, 'Name': 'Shohei Ohtani', 'POS': 'DH', 'Team': 'LAA', 'G': 135, 'AB': 497, 'HR': 44, 'RBI': 95, 'BB': 91, 'SO': 143, 'OBP': 0.412, 'SLG': 0.654, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 3, 'Name': 'Kyle Schwarber', 'POS': 'LF', 'Team': 'PHI', 'G': 147, 'AB': 539, 'HR': 44, 'RBI': 97, 'BB': 118, 'SO': 197, 'OBP': 0.344, 'SLG': 0.475, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 4, 'Name': 'Mookie Betts', 'POS': 'RF', 'Team': 'LAD', 'G': 139, 'AB': 539, 'HR': 39, 'RBI': 103, 'BB': 87, 'SO': 103, 'OBP': 0.41, 'SLG': 0.599, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 5, 'Name': 'Ronald Acuna', 'POS': 'RF', 'Team': 'ATL', 'G': 147, 'AB': 597, 'HR': 37, 'RBI': 98, 'BB': 78, 'SO': 78, 'OBP': 0.418, 'SLG': 0.586, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 6, 'Name': 'Austin Riley', 'POS': '3B', 'Team': 'ATL', 'G': 146, 'AB': 585, 'HR': 36, 'RBI': 90, 'BB': 51, 'SO': 153, 'OBP': 0.34, 'SLG': 0.516, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 7, 'Name': 'Max Muncy', 'POS': '3B', 'Team': 'LAD', 'G': 123, 'AB': 435, 'HR': 35, 'RBI': 100, 'BB': 77, 'SO': 140, 'OBP': 0.332, 'SLG': 0.492, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 8, 'Name': 'Jorge Soler', 'POS': 'DH', 'Team': 'MIA', 'G': 126, 'AB': 466, 'HR': 35, 'RBI': 71, 'BB': 58, 'SO': 130, 'OBP': 0.329, 'SLG': 0.513, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 9, 'Name': 'Luis Robert', 'POS': 'CF', 'Team': 'CWS', 'G': 139, 'AB': 527, 'HR': 35, 'RBI': 75, 'BB': 29, 'SO': 166, 'OBP': 0.314, 'SLG': 0.531, 'Record_date': datetime.date(2023, 9, 17)})]
+(Background on this error at: https://sqlalche.me/e/14/f405)
+[2023-09-17T06:46:05.878+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=mlb_parser, task_id=task_hr_lead_to_sql, execution_date=20230917T064452, start_date=20230917T064605, end_date=20230917T064605
+[2023-09-17T06:46:05.887+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 996 for task task_hr_lead_to_sql ((psycopg2.errors.UndefinedColumn) column "Name" of relation "mlb_hr_lead_2023" does not exist
+LINE 1: INSERT INTO mlb_hr_lead_2023 (index, "Name", "POS", "Team", ...
+                                             ^
+
+[SQL: INSERT INTO mlb_hr_lead_2023 (index, "Name", "POS", "Team", "G", "AB", "HR", "RBI", "BB", "SO", "OBP", "SLG", "Record_date") VALUES (%(index)s, %(Name)s, %(POS)s, %(Team)s, %(G)s, %(AB)s, %(HR)s, %(RBI)s, %(BB)s, %(SO)s, %(OBP)s, %(SLG)s, %(Record_date)s)]
+[parameters: ({'index': 0, 'Name': 'Matt Olson', 'POS': '1B', 'Team': 'ATL', 'G': 148, 'AB': 559, 'HR': 52, 'RBI': 129, 'BB': 96, 'SO': 157, 'OBP': 0.388, 'SLG': 0.617, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 1, 'Name': 'Pete Alonso', 'POS': '1B', 'Team': 'NYM', 'G': 140, 'AB': 512, 'HR': 45, 'RBI': 112, 'BB': 63, 'SO': 131, 'OBP': 0.329, 'SLG': 0.531, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 2, 'Name': 'Shohei Ohtani', 'POS': 'DH', 'Team': 'LAA', 'G': 135, 'AB': 497, 'HR': 44, 'RBI': 95, 'BB': 91, 'SO': 143, 'OBP': 0.412, 'SLG': 0.654, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 3, 'Name': 'Kyle Schwarber', 'POS': 'LF', 'Team': 'PHI', 'G': 147, 'AB': 539, 'HR': 44, 'RBI': 97, 'BB': 118, 'SO': 197, 'OBP': 0.344, 'SLG': 0.475, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 4, 'Name': 'Mookie Betts', 'POS': 'RF', 'Team': 'LAD', 'G': 139, 'AB': 539, 'HR': 39, 'RBI': 103, 'BB': 87, 'SO': 103, 'OBP': 0.41, 'SLG': 0.599, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 5, 'Name': 'Ronald Acuna', 'POS': 'RF', 'Team': 'ATL', 'G': 147, 'AB': 597, 'HR': 37, 'RBI': 98, 'BB': 78, 'SO': 78, 'OBP': 0.418, 'SLG': 0.586, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 6, 'Name': 'Austin Riley', 'POS': '3B', 'Team': 'ATL', 'G': 146, 'AB': 585, 'HR': 36, 'RBI': 90, 'BB': 51, 'SO': 153, 'OBP': 0.34, 'SLG': 0.516, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 7, 'Name': 'Max Muncy', 'POS': '3B', 'Team': 'LAD', 'G': 123, 'AB': 435, 'HR': 35, 'RBI': 100, 'BB': 77, 'SO': 140, 'OBP': 0.332, 'SLG': 0.492, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 8, 'Name': 'Jorge Soler', 'POS': 'DH', 'Team': 'MIA', 'G': 126, 'AB': 466, 'HR': 35, 'RBI': 71, 'BB': 58, 'SO': 130, 'OBP': 0.329, 'SLG': 0.513, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 9, 'Name': 'Luis Robert', 'POS': 'CF', 'Team': 'CWS', 'G': 139, 'AB': 527, 'HR': 35, 'RBI': 75, 'BB': 29, 'SO': 166, 'OBP': 0.314, 'SLG': 0.531, 'Record_date': datetime.date(2023, 9, 17)})]
+(Background on this error at: https://sqlalche.me/e/14/f405); 5396)
+[2023-09-17T06:46:05.919+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-09-17T06:46:05.937+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check

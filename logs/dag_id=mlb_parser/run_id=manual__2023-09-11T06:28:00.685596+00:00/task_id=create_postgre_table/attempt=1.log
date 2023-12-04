@@ -1,0 +1,74 @@
+[2023-09-11T06:28:12.008+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mlb_parser.create_postgre_table manual__2023-09-11T06:28:00.685596+00:00 [queued]>
+[2023-09-11T06:28:12.016+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mlb_parser.create_postgre_table manual__2023-09-11T06:28:00.685596+00:00 [queued]>
+[2023-09-11T06:28:12.018+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 6
+[2023-09-11T06:28:12.031+0000] {taskinstance.py:1382} INFO - Executing <Task(PostgresOperator): create_postgre_table> on 2023-09-11 06:28:00.685596+00:00
+[2023-09-11T06:28:12.060+0000] {standard_task_runner.py:57} INFO - Started process 15765 to run task
+[2023-09-11T06:28:12.063+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mlb_parser', 'create_postgre_table', 'manual__2023-09-11T06:28:00.685596+00:00', '--job-id', '350', '--raw', '--subdir', 'DAGS_FOLDER/mlb_parser.py', '--cfg-path', '/tmp/tmpuul3jsr8']
+[2023-09-11T06:28:12.067+0000] {standard_task_runner.py:85} INFO - Job 350: Subtask create_postgre_table
+[2023-09-11T06:28:12.148+0000] {task_command.py:415} INFO - Running <TaskInstance: mlb_parser.create_postgre_table manual__2023-09-11T06:28:00.685596+00:00 [running]> on host 2e8147b3a465
+[2023-09-11T06:28:12.221+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andy_hsu' AIRFLOW_CTX_DAG_ID='mlb_parser' AIRFLOW_CTX_TASK_ID='create_postgre_table' AIRFLOW_CTX_EXECUTION_DATE='2023-09-11T06:28:00.685596+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-11T06:28:00.685596+00:00'
+[2023-09-11T06:28:12.223+0000] {sql.py:274} INFO - Executing: 
+            create table if not exists mlb_parser (
+                Name str,
+                POS str,
+                Team str,
+                G int,
+                AB int,
+                R int,
+                H int,
+                Double int,
+                Third int,
+                HR int,
+                RBI int,
+                BB int,
+                SO int,
+                SB int,
+                CS int, 
+                OBP float,
+                SLG float,
+                primary key(Name, POS, Team)
+            )
+            
+[2023-09-11T06:28:12.232+0000] {base.py:73} INFO - Using connection ID 'postgres_mlb_parser' for task execution.
+[2023-09-11T06:28:12.246+0000] {base.py:73} INFO - Using connection ID 'postgres_mlb_parser' for task execution.
+[2023-09-11T06:28:12.296+0000] {sql.py:418} INFO - Running statement: 
+            create table if not exists mlb_parser (
+                Name str,
+                POS str,
+                Team str,
+                G int,
+                AB int,
+                R int,
+                H int,
+                Double int,
+                Third int,
+                HR int,
+                RBI int,
+                BB int,
+                SO int,
+                SB int,
+                CS int, 
+                OBP float,
+                SLG float,
+                primary key(Name, POS, Team)
+            )
+            , parameters: None
+[2023-09-11T06:28:12.302+0000] {taskinstance.py:1943} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/common/sql/operators/sql.py", line 280, in execute
+    output = hook.run(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/common/sql/hooks/sql.py", line 392, in run
+    self._run_command(cur, sql_statement, parameters)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/common/sql/hooks/sql.py", line 423, in _run_command
+    cur.execute(sql_statement)
+psycopg2.errors.UndefinedObject: type "str" does not exist
+LINE 3:                 Name str,
+                             ^
+
+[2023-09-11T06:28:12.319+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=mlb_parser, task_id=create_postgre_table, execution_date=20230911T062800, start_date=20230911T062812, end_date=20230911T062812
+[2023-09-11T06:28:12.335+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 350 for task create_postgre_table (type "str" does not exist
+LINE 3:                 Name str,
+                             ^
+; 15765)
+[2023-09-11T06:28:12.364+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-09-11T06:28:12.374+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check

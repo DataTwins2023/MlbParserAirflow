@@ -1,0 +1,93 @@
+[2023-09-17T07:12:06.881+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mlb_parser.task_avg_lead_to_sql manual__2023-09-17T07:09:28.089573+00:00 [queued]>
+[2023-09-17T07:12:06.889+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mlb_parser.task_avg_lead_to_sql manual__2023-09-17T07:09:28.089573+00:00 [queued]>
+[2023-09-17T07:12:06.889+0000] {taskinstance.py:1361} INFO - Starting attempt 2 of 2
+[2023-09-17T07:12:06.897+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): task_avg_lead_to_sql> on 2023-09-17 07:09:28.089573+00:00
+[2023-09-17T07:12:06.903+0000] {standard_task_runner.py:57} INFO - Started process 7874 to run task
+[2023-09-17T07:12:06.905+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mlb_parser', 'task_avg_lead_to_sql', 'manual__2023-09-17T07:09:28.089573+00:00', '--job-id', '1072', '--raw', '--subdir', 'DAGS_FOLDER/mlb_parser.py', '--cfg-path', '/tmp/tmpv7g0v4f6']
+[2023-09-17T07:12:06.908+0000] {standard_task_runner.py:85} INFO - Job 1072: Subtask task_avg_lead_to_sql
+[2023-09-17T07:12:06.940+0000] {task_command.py:415} INFO - Running <TaskInstance: mlb_parser.task_avg_lead_to_sql manual__2023-09-17T07:09:28.089573+00:00 [running]> on host 41ed285d8c3c
+[2023-09-17T07:12:07.004+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andy_hsu' AIRFLOW_CTX_DAG_ID='mlb_parser' AIRFLOW_CTX_TASK_ID='task_avg_lead_to_sql' AIRFLOW_CTX_EXECUTION_DATE='2023-09-17T07:09:28.089573+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-17T07:09:28.089573+00:00'
+[2023-09-17T07:12:07.033+0000] {logging_mixin.py:151} INFO -               Name POS Team    G   AB  ...   SO    OBP    SLG       AVG  Record_date
+0      Luis Arraez  2B  MIA  142  558  ...   34  0.392  0.470  0.351254   2023-09-17
+1     Corey Seager  SS  TEX  105  423  ...   78  0.403  0.657  0.340426   2023-09-17
+2     Ronald Acuna  RF  ATL  147  597  ...   78  0.418  0.586  0.336683   2023-09-17
+3  Freddie Freeman  1B  LAD  147  582  ...  112  0.413  0.570  0.335052   2023-09-17
+4       Yandy Diaz  1B   TB  128  497  ...   91  0.400  0.507  0.321932   2023-09-17
+5      Josh Naylor  1B  CLE  108  405  ...   62  0.353  0.509  0.313580   2023-09-17
+6   Cody Bellinger  CF  CHC  118  453  ...   80  0.359  0.539  0.313466   2023-09-17
+7     Mookie Betts  RF  LAD  139  539  ...  103  0.410  0.599  0.309833   2023-09-17
+8      Jose Altuve  2B  HOU   77  304  ...   60  0.393  0.539  0.305921   2023-09-17
+9      Bo Bichette  SS  TOR  122  515  ...  102  0.336  0.472  0.304854   2023-09-17
+
+[10 rows x 12 columns]
+[2023-09-17T07:12:07.047+0000] {taskinstance.py:1943} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1890, in _execute_context
+    self.dialect.do_executemany(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 982, in do_executemany
+    context._psycopg2_fetched_rows = xtras.execute_values(
+  File "/home/airflow/.local/lib/python3.8/site-packages/psycopg2/extras.py", line 1299, in execute_values
+    cur.execute(b''.join(parts))
+psycopg2.errors.UndefinedColumn: column "index" of relation "mlb_avg_lead_2023" does not exist
+LINE 1: INSERT INTO mlb_avg_lead_2023 (index, "Name", "POS", "Team",...
+                                       ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/mlb_parser.py", line 168, in avg_standing_to_sql
+    avg_data_df.to_sql(name='mlb_avg_lead_2023', con=engine, if_exists="append")
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/core/generic.py", line 2878, in to_sql
+    return sql.to_sql(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 769, in to_sql
+    return pandas_sql.to_sql(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 1920, in to_sql
+    total_inserted = sql_engine.insert_records(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 1470, in insert_records
+    raise err
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 1461, in insert_records
+    return table.insert(chunksize=chunksize, method=method)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 1023, in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 929, in _execute_insert
+    result = conn.execute(self.table.insert(), data)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1385, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1890, in _execute_context
+    self.dialect.do_executemany(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 982, in do_executemany
+    context._psycopg2_fetched_rows = xtras.execute_values(
+  File "/home/airflow/.local/lib/python3.8/site-packages/psycopg2/extras.py", line 1299, in execute_values
+    cur.execute(b''.join(parts))
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column "index" of relation "mlb_avg_lead_2023" does not exist
+LINE 1: INSERT INTO mlb_avg_lead_2023 (index, "Name", "POS", "Team",...
+                                       ^
+
+[SQL: INSERT INTO mlb_avg_lead_2023 (index, "Name", "POS", "Team", "G", "AB", "H", "BB", "SO", "OBP", "SLG", "AVG", "Record_date") VALUES (%(index)s, %(Name)s, %(POS)s, %(Team)s, %(G)s, %(AB)s, %(H)s, %(BB)s, %(SO)s, %(OBP)s, %(SLG)s, %(AVG)s, %(Record_date)s)]
+[parameters: ({'index': 0, 'Name': 'Luis Arraez', 'POS': '2B', 'Team': 'MIA', 'G': 142, 'AB': 558, 'H': 196, 'BB': 35, 'SO': 34, 'OBP': 0.392, 'SLG': 0.47, 'AVG': 0.35125448028673834, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 1, 'Name': 'Corey Seager', 'POS': 'SS', 'Team': 'TEX', 'G': 105, 'AB': 423, 'H': 144, 'BB': 46, 'SO': 78, 'OBP': 0.403, 'SLG': 0.657, 'AVG': 0.3404255319148936, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 2, 'Name': 'Ronald Acuna', 'POS': 'RF', 'Team': 'ATL', 'G': 147, 'AB': 597, 'H': 201, 'BB': 78, 'SO': 78, 'OBP': 0.418, 'SLG': 0.586, 'AVG': 0.33668341708542715, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 3, 'Name': 'Freddie Freeman', 'POS': '1B', 'Team': 'LAD', 'G': 147, 'AB': 582, 'H': 195, 'BB': 69, 'SO': 112, 'OBP': 0.413, 'SLG': 0.57, 'AVG': 0.33505154639175255, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 4, 'Name': 'Yandy Diaz', 'POS': '1B', 'Team': 'TB', 'G': 128, 'AB': 497, 'H': 160, 'BB': 59, 'SO': 91, 'OBP': 0.4, 'SLG': 0.507, 'AVG': 0.32193158953722334, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 5, 'Name': 'Josh Naylor', 'POS': '1B', 'Team': 'CLE', 'G': 108, 'AB': 405, 'H': 127, 'BB': 27, 'SO': 62, 'OBP': 0.353, 'SLG': 0.509, 'AVG': 0.3135802469135803, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 6, 'Name': 'Cody Bellinger', 'POS': 'CF', 'Team': 'CHC', 'G': 118, 'AB': 453, 'H': 142, 'BB': 34, 'SO': 80, 'OBP': 0.359, 'SLG': 0.539, 'AVG': 0.31346578366445915, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 7, 'Name': 'Mookie Betts', 'POS': 'RF', 'Team': 'LAD', 'G': 139, 'AB': 539, 'H': 167, 'BB': 87, 'SO': 103, 'OBP': 0.41, 'SLG': 0.599, 'AVG': 0.3098330241187384, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 8, 'Name': 'Jose Altuve', 'POS': '2B', 'Team': 'HOU', 'G': 77, 'AB': 304, 'H': 93, 'BB': 40, 'SO': 60, 'OBP': 0.393, 'SLG': 0.539, 'AVG': 0.3059210526315789, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 9, 'Name': 'Bo Bichette', 'POS': 'SS', 'Team': 'TOR', 'G': 122, 'AB': 515, 'H': 157, 'BB': 23, 'SO': 102, 'OBP': 0.336, 'SLG': 0.472, 'AVG': 0.3048543689320388, 'Record_date': datetime.date(2023, 9, 17)})]
+(Background on this error at: https://sqlalche.me/e/14/f405)
+[2023-09-17T07:12:07.062+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=mlb_parser, task_id=task_avg_lead_to_sql, execution_date=20230917T070928, start_date=20230917T071206, end_date=20230917T071207
+[2023-09-17T07:12:07.073+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 1072 for task task_avg_lead_to_sql ((psycopg2.errors.UndefinedColumn) column "index" of relation "mlb_avg_lead_2023" does not exist
+LINE 1: INSERT INTO mlb_avg_lead_2023 (index, "Name", "POS", "Team",...
+                                       ^
+
+[SQL: INSERT INTO mlb_avg_lead_2023 (index, "Name", "POS", "Team", "G", "AB", "H", "BB", "SO", "OBP", "SLG", "AVG", "Record_date") VALUES (%(index)s, %(Name)s, %(POS)s, %(Team)s, %(G)s, %(AB)s, %(H)s, %(BB)s, %(SO)s, %(OBP)s, %(SLG)s, %(AVG)s, %(Record_date)s)]
+[parameters: ({'index': 0, 'Name': 'Luis Arraez', 'POS': '2B', 'Team': 'MIA', 'G': 142, 'AB': 558, 'H': 196, 'BB': 35, 'SO': 34, 'OBP': 0.392, 'SLG': 0.47, 'AVG': 0.35125448028673834, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 1, 'Name': 'Corey Seager', 'POS': 'SS', 'Team': 'TEX', 'G': 105, 'AB': 423, 'H': 144, 'BB': 46, 'SO': 78, 'OBP': 0.403, 'SLG': 0.657, 'AVG': 0.3404255319148936, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 2, 'Name': 'Ronald Acuna', 'POS': 'RF', 'Team': 'ATL', 'G': 147, 'AB': 597, 'H': 201, 'BB': 78, 'SO': 78, 'OBP': 0.418, 'SLG': 0.586, 'AVG': 0.33668341708542715, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 3, 'Name': 'Freddie Freeman', 'POS': '1B', 'Team': 'LAD', 'G': 147, 'AB': 582, 'H': 195, 'BB': 69, 'SO': 112, 'OBP': 0.413, 'SLG': 0.57, 'AVG': 0.33505154639175255, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 4, 'Name': 'Yandy Diaz', 'POS': '1B', 'Team': 'TB', 'G': 128, 'AB': 497, 'H': 160, 'BB': 59, 'SO': 91, 'OBP': 0.4, 'SLG': 0.507, 'AVG': 0.32193158953722334, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 5, 'Name': 'Josh Naylor', 'POS': '1B', 'Team': 'CLE', 'G': 108, 'AB': 405, 'H': 127, 'BB': 27, 'SO': 62, 'OBP': 0.353, 'SLG': 0.509, 'AVG': 0.3135802469135803, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 6, 'Name': 'Cody Bellinger', 'POS': 'CF', 'Team': 'CHC', 'G': 118, 'AB': 453, 'H': 142, 'BB': 34, 'SO': 80, 'OBP': 0.359, 'SLG': 0.539, 'AVG': 0.31346578366445915, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 7, 'Name': 'Mookie Betts', 'POS': 'RF', 'Team': 'LAD', 'G': 139, 'AB': 539, 'H': 167, 'BB': 87, 'SO': 103, 'OBP': 0.41, 'SLG': 0.599, 'AVG': 0.3098330241187384, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 8, 'Name': 'Jose Altuve', 'POS': '2B', 'Team': 'HOU', 'G': 77, 'AB': 304, 'H': 93, 'BB': 40, 'SO': 60, 'OBP': 0.393, 'SLG': 0.539, 'AVG': 0.3059210526315789, 'Record_date': datetime.date(2023, 9, 17)}, {'index': 9, 'Name': 'Bo Bichette', 'POS': 'SS', 'Team': 'TOR', 'G': 122, 'AB': 515, 'H': 157, 'BB': 23, 'SO': 102, 'OBP': 0.336, 'SLG': 0.472, 'AVG': 0.3048543689320388, 'Record_date': datetime.date(2023, 9, 17)})]
+(Background on this error at: https://sqlalche.me/e/14/f405); 7874)
+[2023-09-17T07:12:07.120+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-09-17T07:12:07.140+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check

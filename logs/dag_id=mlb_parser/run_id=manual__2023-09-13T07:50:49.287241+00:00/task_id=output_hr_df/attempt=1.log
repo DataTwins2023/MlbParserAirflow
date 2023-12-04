@@ -1,0 +1,24 @@
+[2023-09-13T07:51:08.711+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mlb_parser.output_hr_df manual__2023-09-13T07:50:49.287241+00:00 [queued]>
+[2023-09-13T07:51:08.722+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mlb_parser.output_hr_df manual__2023-09-13T07:50:49.287241+00:00 [queued]>
+[2023-09-13T07:51:08.724+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2023-09-13T07:51:08.738+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): output_hr_df> on 2023-09-13 07:50:49.287241+00:00
+[2023-09-13T07:51:08.752+0000] {standard_task_runner.py:57} INFO - Started process 37182 to run task
+[2023-09-13T07:51:08.766+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mlb_parser', 'output_hr_df', 'manual__2023-09-13T07:50:49.287241+00:00', '--job-id', '571', '--raw', '--subdir', 'DAGS_FOLDER/mlb_parser.py', '--cfg-path', '/tmp/tmpwemzri5u']
+[2023-09-13T07:51:08.771+0000] {standard_task_runner.py:85} INFO - Job 571: Subtask output_hr_df
+[2023-09-13T07:51:08.887+0000] {task_command.py:415} INFO - Running <TaskInstance: mlb_parser.output_hr_df manual__2023-09-13T07:50:49.287241+00:00 [running]> on host 2e8147b3a465
+[2023-09-13T07:51:09.230+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andy_hsu' AIRFLOW_CTX_DAG_ID='mlb_parser' AIRFLOW_CTX_TASK_ID='output_hr_df' AIRFLOW_CTX_EXECUTION_DATE='2023-09-13T07:50:49.287241+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-13T07:50:49.287241+00:00'
+[2023-09-13T07:51:11.488+0000] {logging_mixin.py:151} INFO -                 0    1    2         3
+0     Luis Arraez  188  540  0.348148
+1    Ronald Acuna  196  589  0.332767
+2    Bryce Harper  122  411  0.296837
+3  Michael Harris  129  439  0.293850
+4    Bryson Stott  153  532  0.287594
+5   Brandon Marsh  104  366  0.284153
+6      Matt Olson  154  548  0.281022
+7       Alec Bohm  138  496  0.278226
+8     Lane Thomas  154  554  0.277978
+9       Jon Berti   97  349  0.277937
+[2023-09-13T07:51:11.499+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-09-13T07:51:11.604+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=mlb_parser, task_id=output_hr_df, execution_date=20230913T075049, start_date=20230913T075108, end_date=20230913T075111
+[2023-09-13T07:51:11.693+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-09-13T07:51:11.713+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check

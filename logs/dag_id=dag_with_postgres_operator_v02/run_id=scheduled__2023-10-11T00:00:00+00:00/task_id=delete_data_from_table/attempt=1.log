@@ -1,0 +1,1 @@
+[2023-10-12T07:16:04.003+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_postgres_operator_v02.delete_data_from_table scheduled__2023-10-11T00:00:00+00:00 [queued]>

@@ -1,0 +1,60 @@
+[2023-09-30T04:48:38.309+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mlb_parser.data_clean scheduled__2023-09-29T04:00:00+00:00 [queued]>
+[2023-09-30T04:48:38.315+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mlb_parser.data_clean scheduled__2023-09-29T04:00:00+00:00 [queued]>
+[2023-09-30T04:48:38.316+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2023-09-30T04:48:38.323+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): data_clean> on 2023-09-29 04:00:00+00:00
+[2023-09-30T04:48:38.328+0000] {standard_task_runner.py:57} INFO - Started process 91129 to run task
+[2023-09-30T04:48:38.332+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mlb_parser', 'data_clean', 'scheduled__2023-09-29T04:00:00+00:00', '--job-id', '1659', '--raw', '--subdir', 'DAGS_FOLDER/mlb_parser_hit.py', '--cfg-path', '/tmp/tmpcnh0nk2f']
+[2023-09-30T04:48:38.337+0000] {standard_task_runner.py:85} INFO - Job 1659: Subtask data_clean
+[2023-09-30T04:48:38.369+0000] {task_command.py:415} INFO - Running <TaskInstance: mlb_parser.data_clean scheduled__2023-09-29T04:00:00+00:00 [running]> on host d98c068596b4
+[2023-09-30T04:48:38.419+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andy_hsu' AIRFLOW_CTX_DAG_ID='mlb_parser' AIRFLOW_CTX_TASK_ID='data_clean' AIRFLOW_CTX_EXECUTION_DATE='2023-09-29T04:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-09-29T04:00:00+00:00'
+[2023-09-30T04:48:38.428+0000] {logging_mixin.py:151} INFO - ['nationals', 'braves', 'mets', 'marlins', 'phillies', 'brewers', 'cubs', 'reds', 'pirates', 'cardinals', 'dodgers', 'giants', 'padres', 'rockies', 'dbacks', 'astros', 'angels', 'rangers', 'athletics', 'mariners', 'twins', 'guardians', 'tigers', 'whitesox', 'royals', 'orioles', 'rays', 'bluejays', 'redsox', 'yankees']
+[2023-09-30T04:48:38.429+0000] {logging_mixin.py:151} INFO - https://www.mlb.com/nationals/stats/
+[2023-09-30T05:18:00.261+0000] {local_task_job_runner.py:294} WARNING - State of this instance has been externally set to up_for_retry. Terminating instance.
+[2023-09-30T05:18:00.279+0000] {process_utils.py:131} INFO - Sending 15 to group 91129. PIDs of all processes in the group: [91129]
+[2023-09-30T05:18:00.280+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 91129
+[2023-09-30T05:18:00.315+0000] {taskinstance.py:1632} ERROR - Received SIGTERM. Terminating subprocesses.
+[2023-09-30T05:18:00.340+0000] {taskinstance.py:1943} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/mlb_parser_hit.py", line 135, in clean_data
+    team_record = crawler_team(t)
+  File "/opt/airflow/dags/mlb_parser_hit.py", line 48, in crawler_team
+    res = requests.get(url)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 714, in urlopen
+    httplib_response = self._make_request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 466, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 461, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/local/lib/python3.8/http/client.py", line 1348, in getresponse
+    response.begin()
+  File "/usr/local/lib/python3.8/http/client.py", line 316, in begin
+    version, status, reason = self._read_status()
+  File "/usr/local/lib/python3.8/http/client.py", line 277, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/local/lib/python3.8/socket.py", line 669, in readinto
+    return self._sock.recv_into(b)
+  File "/usr/local/lib/python3.8/ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/local/lib/python3.8/ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1634, in signal_handler
+    raise AirflowException("Task received SIGTERM signal")
+airflow.exceptions.AirflowException: Task received SIGTERM signal
+[2023-09-30T05:18:00.369+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=mlb_parser, task_id=data_clean, execution_date=20230929T040000, start_date=20230930T044838, end_date=20230930T051800
+[2023-09-30T05:18:00.393+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 1659 for task data_clean (Task received SIGTERM signal; 91129)
+[2023-09-30T05:18:00.409+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=91129, status='terminated', exitcode=1, started='04:48:37') (91129) terminated with exit code 1

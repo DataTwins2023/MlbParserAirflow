@@ -1,0 +1,26 @@
+[2023-09-15T07:18:43.164+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mlb_parser.output_avg_df manual__2023-09-15T07:18:30.386227+00:00 [queued]>
+[2023-09-15T07:18:43.171+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mlb_parser.output_avg_df manual__2023-09-15T07:18:30.386227+00:00 [queued]>
+[2023-09-15T07:18:43.172+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2023-09-15T07:18:43.183+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): output_avg_df> on 2023-09-15 07:18:30.386227+00:00
+[2023-09-15T07:18:43.191+0000] {standard_task_runner.py:57} INFO - Started process 24052 to run task
+[2023-09-15T07:18:43.194+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mlb_parser', 'output_avg_df', 'manual__2023-09-15T07:18:30.386227+00:00', '--job-id', '810', '--raw', '--subdir', 'DAGS_FOLDER/mlb_parser.py', '--cfg-path', '/tmp/tmpw5mmuqo9']
+[2023-09-15T07:18:43.197+0000] {standard_task_runner.py:85} INFO - Job 810: Subtask output_avg_df
+[2023-09-15T07:18:43.236+0000] {task_command.py:415} INFO - Running <TaskInstance: mlb_parser.output_avg_df manual__2023-09-15T07:18:30.386227+00:00 [running]> on host 2e8147b3a465
+[2023-09-15T07:18:43.290+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andy_hsu' AIRFLOW_CTX_DAG_ID='mlb_parser' AIRFLOW_CTX_TASK_ID='output_avg_df' AIRFLOW_CTX_EXECUTION_DATE='2023-09-15T07:18:30.386227+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-15T07:18:30.386227+00:00'
+[2023-09-15T07:18:43.301+0000] {logging_mixin.py:151} INFO - [['Joey Meneses', 'DH', 'WSH', 139, 550, 153, 35, 117, 0.326, 0.402, 0.2781818181818182, datetime.date(2023, 9, 15)], ['Lane Thomas', 'RF', 'WSH', 142, 563, 155, 33, 156, 0.324, 0.472, 0.2753108348134991, datetime.date(2023, 9, 15)], ['Stone Garrett', 'LF', 'WSH', 89, 234, 63, 26, 82, 0.343, 0.457, 0.2692307692307692, datetime.date(2023, 9, 15)], ['Dominic Smith', '1B', 'WSH', 140, 483, 127, 41, 84, 0.332, 0.364, 0.2629399585921325, datetime.date(2023, 9, 15)], ['Keibert Ruiz', 'C', 'WSH', 123, 465, 119, 30, 49, 0.308, 0.409, 0.25591397849462366, datetime.date(2023, 9, 15)], ['Ildemaro Vargas', '3B', 'WSH', 76, 228, 58, 16, 15, 0.305, 0.364, 0.2543859649122807, datetime.date(2023, 9, 15)], ['Luis Garcia', '2B', 'WSH', 107, 398, 100, 22, 54, 0.286, 0.349, 0.25125628140703515, datetime.date(2023, 9, 15)], ['CJ Abrams', 'SS', 'WSH', 136, 499, 124, 27, 106, 0.303, 0.421, 0.24849699398797595, datetime.date(2023, 9, 15)], ['Alex Call', 'CF', 'WSH', 122, 365, 71, 50, 76, 0.3, 0.293, 0.19452054794520549, datetime.date(2023, 9, 15)]]
+[2023-09-15T07:18:43.318+0000] {logging_mixin.py:151} INFO -                 0   1    2    3    4   ...   7      8      9         10          11
+0     Joey Meneses  DH  WSH  139  550  ...  117  0.326  0.402  0.278182  2023-09-15
+1      Lane Thomas  RF  WSH  142  563  ...  156  0.324  0.472  0.275311  2023-09-15
+2    Stone Garrett  LF  WSH   89  234  ...   82  0.343  0.457  0.269231  2023-09-15
+3    Dominic Smith  1B  WSH  140  483  ...   84  0.332  0.364  0.262940  2023-09-15
+4     Keibert Ruiz   C  WSH  123  465  ...   49  0.308  0.409  0.255914  2023-09-15
+5  Ildemaro Vargas  3B  WSH   76  228  ...   15  0.305  0.364  0.254386  2023-09-15
+6      Luis Garcia  2B  WSH  107  398  ...   54  0.286  0.349  0.251256  2023-09-15
+7        CJ Abrams  SS  WSH  136  499  ...  106  0.303  0.421  0.248497  2023-09-15
+8        Alex Call  CF  WSH  122  365  ...   76  0.300  0.293  0.194521  2023-09-15
+
+[9 rows x 12 columns]
+[2023-09-15T07:18:43.319+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-09-15T07:18:43.325+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=mlb_parser, task_id=output_avg_df, execution_date=20230915T071830, start_date=20230915T071843, end_date=20230915T071843
+[2023-09-15T07:18:43.366+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-09-15T07:18:43.383+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check

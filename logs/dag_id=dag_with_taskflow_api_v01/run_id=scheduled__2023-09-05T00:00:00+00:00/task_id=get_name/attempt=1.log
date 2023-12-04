@@ -1,0 +1,8 @@
+[2023-09-11T02:05:13.290+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v01.get_name scheduled__2023-09-05T00:00:00+00:00 [queued]>
+[2023-09-11T02:05:13.589+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v01.get_name scheduled__2023-09-05T00:00:00+00:00 [queued]>
+[2023-09-11T02:05:13.593+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 6
+[2023-09-11T02:05:13.881+0000] {taskinstance.py:1382} INFO - Executing <Task(_PythonDecoratedOperator): get_name> on 2023-09-05 00:00:00+00:00
+[2023-09-11T02:05:13.997+0000] {standard_task_runner.py:57} INFO - Started process 261 to run task
+[2023-09-11T02:05:14.186+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'dag_with_taskflow_api_v01', 'get_name', 'scheduled__2023-09-05T00:00:00+00:00', '--job-id', '221', '--raw', '--subdir', 'DAGS_FOLDER/dag_with_taskflow_api.py', '--cfg-path', '/tmp/tmpsyoi623c']
+[2023-09-11T02:05:14.455+0000] {standard_task_runner.py:85} INFO - Job 221: Subtask get_name
+[2023-09-11T02:05:18.027+0000] {local_task_job_runner.py:228} INFO - Task exited with return code -9

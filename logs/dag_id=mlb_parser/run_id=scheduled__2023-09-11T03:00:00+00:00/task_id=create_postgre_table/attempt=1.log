@@ -1,0 +1,58 @@
+[2023-09-12T03:00:01.944+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mlb_parser.create_postgre_table scheduled__2023-09-11T03:00:00+00:00 [queued]>
+[2023-09-12T03:00:01.951+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mlb_parser.create_postgre_table scheduled__2023-09-11T03:00:00+00:00 [queued]>
+[2023-09-12T03:00:01.952+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2023-09-12T03:00:01.961+0000] {taskinstance.py:1382} INFO - Executing <Task(PostgresOperator): create_postgre_table> on 2023-09-11 03:00:00+00:00
+[2023-09-12T03:00:01.967+0000] {standard_task_runner.py:57} INFO - Started process 58424 to run task
+[2023-09-12T03:00:01.970+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mlb_parser', 'create_postgre_table', 'scheduled__2023-09-11T03:00:00+00:00', '--job-id', '465', '--raw', '--subdir', 'DAGS_FOLDER/mlb_parser.py', '--cfg-path', '/tmp/tmp5tmshiph']
+[2023-09-12T03:00:01.983+0000] {standard_task_runner.py:85} INFO - Job 465: Subtask create_postgre_table
+[2023-09-12T03:00:02.073+0000] {task_command.py:415} INFO - Running <TaskInstance: mlb_parser.create_postgre_table scheduled__2023-09-11T03:00:00+00:00 [running]> on host 2e8147b3a465
+[2023-09-12T03:00:02.177+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andy_hsu' AIRFLOW_CTX_DAG_ID='mlb_parser' AIRFLOW_CTX_TASK_ID='create_postgre_table' AIRFLOW_CTX_EXECUTION_DATE='2023-09-11T03:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-09-11T03:00:00+00:00'
+[2023-09-12T03:00:02.180+0000] {sql.py:274} INFO - Executing: 
+            create table if not exists mlb_parser (
+                Name varchar(40),
+                POS varchar(5),
+                Team varchar(20),
+                G int,
+                AB int,
+                R int,
+                H int,
+                Double int,
+                Third int,
+                HR int,
+                RBI int,
+                BB int,
+                SO int,
+                SB int,
+                CS int, 
+                OBP float,
+                SLG float,
+                primary key(Name, POS, Team)
+            )
+            
+[2023-09-12T03:00:02.187+0000] {base.py:73} INFO - Using connection ID 'postgres_mlb_parser_DB' for task execution.
+[2023-09-12T03:00:02.195+0000] {base.py:73} INFO - Using connection ID 'postgres_mlb_parser_DB' for task execution.
+[2023-09-12T03:00:02.217+0000] {sql.py:418} INFO - Running statement: 
+            create table if not exists mlb_parser (
+                Name varchar(40),
+                POS varchar(5),
+                Team varchar(20),
+                G int,
+                AB int,
+                R int,
+                H int,
+                Double int,
+                Third int,
+                HR int,
+                RBI int,
+                BB int,
+                SO int,
+                SB int,
+                CS int, 
+                OBP float,
+                SLG float,
+                primary key(Name, POS, Team)
+            )
+            , parameters: None
+[2023-09-12T03:00:02.228+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=mlb_parser, task_id=create_postgre_table, execution_date=20230911T030000, start_date=20230912T030001, end_date=20230912T030002
+[2023-09-12T03:00:02.277+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-09-12T03:00:02.288+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check

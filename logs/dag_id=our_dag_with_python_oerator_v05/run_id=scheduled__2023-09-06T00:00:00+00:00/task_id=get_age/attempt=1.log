@@ -1,0 +1,8 @@
+[2023-09-11T02:04:37.867+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: our_dag_with_python_oerator_v05.get_age scheduled__2023-09-06T00:00:00+00:00 [queued]>
+[2023-09-11T02:04:38.018+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: our_dag_with_python_oerator_v05.get_age scheduled__2023-09-06T00:00:00+00:00 [queued]>
+[2023-09-11T02:04:38.024+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 6
+[2023-09-11T02:04:39.376+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): get_age> on 2023-09-06 00:00:00+00:00
+[2023-09-11T02:04:39.401+0000] {standard_task_runner.py:57} INFO - Started process 241 to run task
+[2023-09-11T02:04:39.755+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'our_dag_with_python_oerator_v05', 'get_age', 'scheduled__2023-09-06T00:00:00+00:00', '--job-id', '220', '--raw', '--subdir', 'DAGS_FOLDER/create_dag_with_python_operator.py', '--cfg-path', '/tmp/tmpeuhylter']
+[2023-09-11T02:04:39.829+0000] {standard_task_runner.py:85} INFO - Job 220: Subtask get_age
+[2023-09-11T02:04:42.328+0000] {task_command.py:415} INFO - Running <TaskInstance: our_dag_with_python_oerator_v05.get_age scheduled__2023-09-06T00:00:00+00:00 [running]> on host 2e8147b3a465

@@ -1,0 +1,14 @@
+[2023-09-04T05:56:33.499+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: FIBA_dag_v4.parse_data manual__2023-09-04T05:56:22.162508+00:00 [queued]>
+[2023-09-04T05:56:33.505+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: FIBA_dag_v4.parse_data manual__2023-09-04T05:56:22.162508+00:00 [queued]>
+[2023-09-04T05:56:33.506+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 6
+[2023-09-04T05:56:33.513+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): parse_data> on 2023-09-04 05:56:22.162508+00:00
+[2023-09-04T05:56:33.517+0000] {standard_task_runner.py:57} INFO - Started process 97531 to run task
+[2023-09-04T05:56:33.519+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'FIBA_dag_v4', 'parse_data', 'manual__2023-09-04T05:56:22.162508+00:00', '--job-id', '78', '--raw', '--subdir', 'DAGS_FOLDER/FIBA.py', '--cfg-path', '/tmp/tmptkfgg7ti']
+[2023-09-04T05:56:33.521+0000] {standard_task_runner.py:85} INFO - Job 78: Subtask parse_data
+[2023-09-04T05:56:33.549+0000] {task_command.py:415} INFO - Running <TaskInstance: FIBA_dag_v4.parse_data manual__2023-09-04T05:56:22.162508+00:00 [running]> on host ad6c67079ac6
+[2023-09-04T05:56:33.590+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andy_hsu' AIRFLOW_CTX_DAG_ID='FIBA_dag_v4' AIRFLOW_CTX_TASK_ID='parse_data' AIRFLOW_CTX_EXECUTION_DATE='2023-09-04T05:56:22.162508+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-04T05:56:22.162508+00:00'
+[2023-09-04T05:56:33.592+0000] {logging_mixin.py:151} INFO - start_parse
+[2023-09-04T05:56:33.592+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-09-04T05:56:33.598+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=FIBA_dag_v4, task_id=parse_data, execution_date=20230904T055622, start_date=20230904T055633, end_date=20230904T055633
+[2023-09-04T05:56:33.611+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-09-04T05:56:33.621+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check

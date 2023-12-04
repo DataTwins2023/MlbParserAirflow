@@ -1,0 +1,90 @@
+[2023-09-18T04:03:04.434+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mlb_parser.task_avg_lead_to_sql scheduled__2023-09-17T04:00:00+00:00 [queued]>
+[2023-09-18T04:03:04.440+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mlb_parser.task_avg_lead_to_sql scheduled__2023-09-17T04:00:00+00:00 [queued]>
+[2023-09-18T04:03:04.441+0000] {taskinstance.py:1361} INFO - Starting attempt 2 of 2
+[2023-09-18T04:03:04.448+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): task_avg_lead_to_sql> on 2023-09-17 04:00:00+00:00
+[2023-09-18T04:03:04.452+0000] {standard_task_runner.py:57} INFO - Started process 10412 to run task
+[2023-09-18T04:03:04.455+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mlb_parser', 'task_avg_lead_to_sql', 'scheduled__2023-09-17T04:00:00+00:00', '--job-id', '1145', '--raw', '--subdir', 'DAGS_FOLDER/mlb_parser.py', '--cfg-path', '/tmp/tmpkx19tsmf']
+[2023-09-18T04:03:04.457+0000] {standard_task_runner.py:85} INFO - Job 1145: Subtask task_avg_lead_to_sql
+[2023-09-18T04:03:04.488+0000] {task_command.py:415} INFO - Running <TaskInstance: mlb_parser.task_avg_lead_to_sql scheduled__2023-09-17T04:00:00+00:00 [running]> on host 41ed285d8c3c
+[2023-09-18T04:03:04.554+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andy_hsu' AIRFLOW_CTX_DAG_ID='mlb_parser' AIRFLOW_CTX_TASK_ID='task_avg_lead_to_sql' AIRFLOW_CTX_EXECUTION_DATE='2023-09-17T04:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-09-17T04:00:00+00:00'
+[2023-09-18T04:03:04.574+0000] {logging_mixin.py:151} INFO -               name pos team    g   ab  ...   so    obp    slg       avg  record_date
+0      Luis Arraez  2B  MIA  143  563  ...   34  0.393  0.471  0.353464   2023-09-18
+1     Corey Seager  SS  TEX  106  427  ...   80  0.399  0.651  0.337237   2023-09-18
+2     Ronald Acuna  RF  ATL  147  597  ...   78  0.418  0.586  0.336683   2023-09-18
+3  Freddie Freeman  1B  LAD  147  582  ...  112  0.413  0.570  0.335052   2023-09-18
+4       Yandy Diaz  1B   TB  129  501  ...   91  0.398  0.503  0.319361   2023-09-18
+5      Josh Naylor  1B  CLE  109  408  ...   62  0.354  0.507  0.313725   2023-09-18
+6   Cody Bellinger  CF  CHC  119  457  ...   81  0.356  0.534  0.310722   2023-09-18
+7      Jose Altuve  2B  HOU   78  309  ...   60  0.395  0.544  0.310680   2023-09-18
+8     Mookie Betts  RF  LAD  139  539  ...  103  0.410  0.599  0.309833   2023-09-18
+9    Shohei Ohtani  DH  LAA  135  497  ...  143  0.412  0.654  0.303823   2023-09-18
+
+[10 rows x 12 columns]
+[2023-09-18T04:03:04.589+0000] {taskinstance.py:1943} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1890, in _execute_context
+    self.dialect.do_executemany(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 982, in do_executemany
+    context._psycopg2_fetched_rows = xtras.execute_values(
+  File "/home/airflow/.local/lib/python3.8/site-packages/psycopg2/extras.py", line 1299, in execute_values
+    cur.execute(b''.join(parts))
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "mlb_avg_lead_2023_pkey"
+DETAIL:  Key (name, pos, team)=(Luis Arraez, 2B, MIA) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/mlb_parser.py", line 168, in avg_standing_to_sql
+    avg_data_df.to_sql(name='mlb_avg_lead_2023', con=engine, if_exists="append", index=False)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/core/generic.py", line 2878, in to_sql
+    return sql.to_sql(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 769, in to_sql
+    return pandas_sql.to_sql(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 1920, in to_sql
+    total_inserted = sql_engine.insert_records(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 1470, in insert_records
+    raise err
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 1461, in insert_records
+    return table.insert(chunksize=chunksize, method=method)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 1023, in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 929, in _execute_insert
+    result = conn.execute(self.table.insert(), data)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1385, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1890, in _execute_context
+    self.dialect.do_executemany(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 982, in do_executemany
+    context._psycopg2_fetched_rows = xtras.execute_values(
+  File "/home/airflow/.local/lib/python3.8/site-packages/psycopg2/extras.py", line 1299, in execute_values
+    cur.execute(b''.join(parts))
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "mlb_avg_lead_2023_pkey"
+DETAIL:  Key (name, pos, team)=(Luis Arraez, 2B, MIA) already exists.
+
+[SQL: INSERT INTO mlb_avg_lead_2023 (name, pos, team, g, ab, h, bb, so, obp, slg, avg, record_date) VALUES (%(name)s, %(pos)s, %(team)s, %(g)s, %(ab)s, %(h)s, %(bb)s, %(so)s, %(obp)s, %(slg)s, %(avg)s, %(record_date)s)]
+[parameters: ({'name': 'Luis Arraez', 'pos': '2B', 'team': 'MIA', 'g': 143, 'ab': 563, 'h': 199, 'bb': 35, 'so': 34, 'obp': 0.393, 'slg': 0.471, 'avg': 0.35346358792184723, 'record_date': datetime.date(2023, 9, 18)}, {'name': 'Corey Seager', 'pos': 'SS', 'team': 'TEX', 'g': 106, 'ab': 427, 'h': 144, 'bb': 46, 'so': 80, 'obp': 0.399, 'slg': 0.651, 'avg': 0.3372365339578454, 'record_date': datetime.date(2023, 9, 18)}, {'name': 'Ronald Acuna', 'pos': 'RF', 'team': 'ATL', 'g': 147, 'ab': 597, 'h': 201, 'bb': 78, 'so': 78, 'obp': 0.418, 'slg': 0.586, 'avg': 0.33668341708542715, 'record_date': datetime.date(2023, 9, 18)}, {'name': 'Freddie Freeman', 'pos': '1B', 'team': 'LAD', 'g': 147, 'ab': 582, 'h': 195, 'bb': 69, 'so': 112, 'obp': 0.413, 'slg': 0.57, 'avg': 0.33505154639175255, 'record_date': datetime.date(2023, 9, 18)}, {'name': 'Yandy Diaz', 'pos': '1B', 'team': 'TB', 'g': 129, 'ab': 501, 'h': 160, 'bb': 60, 'so': 91, 'obp': 0.398, 'slg': 0.503, 'avg': 0.3193612774451098, 'record_date': datetime.date(2023, 9, 18)}, {'name': 'Josh Naylor', 'pos': '1B', 'team': 'CLE', 'g': 109, 'ab': 408, 'h': 128, 'bb': 28, 'so': 62, 'obp': 0.354, 'slg': 0.507, 'avg': 0.3137254901960784, 'record_date': datetime.date(2023, 9, 18)}, {'name': 'Cody Bellinger', 'pos': 'CF', 'team': 'CHC', 'g': 119, 'ab': 457, 'h': 142, 'bb': 34, 'so': 81, 'obp': 0.356, 'slg': 0.534, 'avg': 0.31072210065645517, 'record_date': datetime.date(2023, 9, 18)}, {'name': 'Jose Altuve', 'pos': '2B', 'team': 'HOU', 'g': 78, 'ab': 309, 'h': 96, 'bb': 40, 'so': 60, 'obp': 0.395, 'slg': 0.544, 'avg': 0.3106796116504854, 'record_date': datetime.date(2023, 9, 18)}, {'name': 'Mookie Betts', 'pos': 'RF', 'team': 'LAD', 'g': 139, 'ab': 539, 'h': 167, 'bb': 87, 'so': 103, 'obp': 0.41, 'slg': 0.599, 'avg': 0.3098330241187384, 'record_date': datetime.date(2023, 9, 18)}, {'name': 'Shohei Ohtani', 'pos': 'DH', 'team': 'LAA', 'g': 135, 'ab': 497, 'h': 151, 'bb': 91, 'so': 143, 'obp': 0.412, 'slg': 0.654, 'avg': 0.3038229376257545, 'record_date': datetime.date(2023, 9, 18)})]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+[2023-09-18T04:03:04.602+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=mlb_parser, task_id=task_avg_lead_to_sql, execution_date=20230917T040000, start_date=20230918T040304, end_date=20230918T040304
+[2023-09-18T04:03:04.622+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 1145 for task task_avg_lead_to_sql ((psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "mlb_avg_lead_2023_pkey"
+DETAIL:  Key (name, pos, team)=(Luis Arraez, 2B, MIA) already exists.
+
+[SQL: INSERT INTO mlb_avg_lead_2023 (name, pos, team, g, ab, h, bb, so, obp, slg, avg, record_date) VALUES (%(name)s, %(pos)s, %(team)s, %(g)s, %(ab)s, %(h)s, %(bb)s, %(so)s, %(obp)s, %(slg)s, %(avg)s, %(record_date)s)]
+[parameters: ({'name': 'Luis Arraez', 'pos': '2B', 'team': 'MIA', 'g': 143, 'ab': 563, 'h': 199, 'bb': 35, 'so': 34, 'obp': 0.393, 'slg': 0.471, 'avg': 0.35346358792184723, 'record_date': datetime.date(2023, 9, 18)}, {'name': 'Corey Seager', 'pos': 'SS', 'team': 'TEX', 'g': 106, 'ab': 427, 'h': 144, 'bb': 46, 'so': 80, 'obp': 0.399, 'slg': 0.651, 'avg': 0.3372365339578454, 'record_date': datetime.date(2023, 9, 18)}, {'name': 'Ronald Acuna', 'pos': 'RF', 'team': 'ATL', 'g': 147, 'ab': 597, 'h': 201, 'bb': 78, 'so': 78, 'obp': 0.418, 'slg': 0.586, 'avg': 0.33668341708542715, 'record_date': datetime.date(2023, 9, 18)}, {'name': 'Freddie Freeman', 'pos': '1B', 'team': 'LAD', 'g': 147, 'ab': 582, 'h': 195, 'bb': 69, 'so': 112, 'obp': 0.413, 'slg': 0.57, 'avg': 0.33505154639175255, 'record_date': datetime.date(2023, 9, 18)}, {'name': 'Yandy Diaz', 'pos': '1B', 'team': 'TB', 'g': 129, 'ab': 501, 'h': 160, 'bb': 60, 'so': 91, 'obp': 0.398, 'slg': 0.503, 'avg': 0.3193612774451098, 'record_date': datetime.date(2023, 9, 18)}, {'name': 'Josh Naylor', 'pos': '1B', 'team': 'CLE', 'g': 109, 'ab': 408, 'h': 128, 'bb': 28, 'so': 62, 'obp': 0.354, 'slg': 0.507, 'avg': 0.3137254901960784, 'record_date': datetime.date(2023, 9, 18)}, {'name': 'Cody Bellinger', 'pos': 'CF', 'team': 'CHC', 'g': 119, 'ab': 457, 'h': 142, 'bb': 34, 'so': 81, 'obp': 0.356, 'slg': 0.534, 'avg': 0.31072210065645517, 'record_date': datetime.date(2023, 9, 18)}, {'name': 'Jose Altuve', 'pos': '2B', 'team': 'HOU', 'g': 78, 'ab': 309, 'h': 96, 'bb': 40, 'so': 60, 'obp': 0.395, 'slg': 0.544, 'avg': 0.3106796116504854, 'record_date': datetime.date(2023, 9, 18)}, {'name': 'Mookie Betts', 'pos': 'RF', 'team': 'LAD', 'g': 139, 'ab': 539, 'h': 167, 'bb': 87, 'so': 103, 'obp': 0.41, 'slg': 0.599, 'avg': 0.3098330241187384, 'record_date': datetime.date(2023, 9, 18)}, {'name': 'Shohei Ohtani', 'pos': 'DH', 'team': 'LAA', 'g': 135, 'ab': 497, 'h': 151, 'bb': 91, 'so': 143, 'obp': 0.412, 'slg': 0.654, 'avg': 0.3038229376257545, 'record_date': datetime.date(2023, 9, 18)})]
+(Background on this error at: https://sqlalche.me/e/14/gkpj); 10412)
+[2023-09-18T04:03:04.667+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-09-18T04:03:04.678+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check

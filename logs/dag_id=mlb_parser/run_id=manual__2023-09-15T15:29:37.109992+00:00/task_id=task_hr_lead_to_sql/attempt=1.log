@@ -1,0 +1,22 @@
+[2023-09-15T15:31:03.498+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mlb_parser.task_hr_lead_to_sql manual__2023-09-15T15:29:37.109992+00:00 [queued]>
+[2023-09-15T15:31:03.509+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mlb_parser.task_hr_lead_to_sql manual__2023-09-15T15:29:37.109992+00:00 [queued]>
+[2023-09-15T15:31:03.510+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2023-09-15T15:31:03.526+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): task_hr_lead_to_sql> on 2023-09-15 15:29:37.109992+00:00
+[2023-09-15T15:31:03.534+0000] {standard_task_runner.py:57} INFO - Started process 41518 to run task
+[2023-09-15T15:31:03.537+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mlb_parser', 'task_hr_lead_to_sql', 'manual__2023-09-15T15:29:37.109992+00:00', '--job-id', '827', '--raw', '--subdir', 'DAGS_FOLDER/mlb_parser.py', '--cfg-path', '/tmp/tmp96zhow32']
+[2023-09-15T15:31:03.544+0000] {standard_task_runner.py:85} INFO - Job 827: Subtask task_hr_lead_to_sql
+[2023-09-15T15:31:03.598+0000] {task_command.py:415} INFO - Running <TaskInstance: mlb_parser.task_hr_lead_to_sql manual__2023-09-15T15:29:37.109992+00:00 [running]> on host 2e8147b3a465
+[2023-09-15T15:31:03.681+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andy_hsu' AIRFLOW_CTX_DAG_ID='mlb_parser' AIRFLOW_CTX_TASK_ID='task_hr_lead_to_sql' AIRFLOW_CTX_EXECUTION_DATE='2023-09-15T15:29:37.109992+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-15T15:29:37.109992+00:00'
+[2023-09-15T15:31:03.699+0000] {taskinstance.py:1943} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/mlb_parser.py", line 172, in hr_standing_to_sql
+    hr_data.to_sql(name='mlb_hr_lead_2023', con=engine, if_exists="replace")
+AttributeError: 'list' object has no attribute 'to_sql'
+[2023-09-15T15:31:03.715+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=mlb_parser, task_id=task_hr_lead_to_sql, execution_date=20230915T152937, start_date=20230915T153103, end_date=20230915T153103
+[2023-09-15T15:31:03.734+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 827 for task task_hr_lead_to_sql ('list' object has no attribute 'to_sql'; 41518)
+[2023-09-15T15:31:03.757+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-09-15T15:31:03.773+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check

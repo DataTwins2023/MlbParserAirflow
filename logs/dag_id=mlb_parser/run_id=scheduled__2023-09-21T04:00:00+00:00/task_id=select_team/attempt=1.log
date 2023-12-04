@@ -1,0 +1,13 @@
+[2023-09-22T04:00:01.590+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mlb_parser.select_team scheduled__2023-09-21T04:00:00+00:00 [queued]>
+[2023-09-22T04:00:01.596+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mlb_parser.select_team scheduled__2023-09-21T04:00:00+00:00 [queued]>
+[2023-09-22T04:00:01.598+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2023-09-22T04:00:01.608+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): select_team> on 2023-09-21 04:00:00+00:00
+[2023-09-22T04:00:01.612+0000] {standard_task_runner.py:57} INFO - Started process 17876 to run task
+[2023-09-22T04:00:01.616+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mlb_parser', 'select_team', 'scheduled__2023-09-21T04:00:00+00:00', '--job-id', '1405', '--raw', '--subdir', 'DAGS_FOLDER/mlb_parser_hit.py', '--cfg-path', '/tmp/tmpbh_9kl2h']
+[2023-09-22T04:00:01.619+0000] {standard_task_runner.py:85} INFO - Job 1405: Subtask select_team
+[2023-09-22T04:00:01.667+0000] {task_command.py:415} INFO - Running <TaskInstance: mlb_parser.select_team scheduled__2023-09-21T04:00:00+00:00 [running]> on host d98c068596b4
+[2023-09-22T04:00:01.795+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andy_hsu' AIRFLOW_CTX_DAG_ID='mlb_parser' AIRFLOW_CTX_TASK_ID='select_team' AIRFLOW_CTX_EXECUTION_DATE='2023-09-21T04:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-09-21T04:00:00+00:00'
+[2023-09-22T04:00:01.814+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-09-22T04:00:01.829+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=mlb_parser, task_id=select_team, execution_date=20230921T040000, start_date=20230922T040001, end_date=20230922T040001
+[2023-09-22T04:00:01.878+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-09-22T04:00:01.898+0000] {taskinstance.py:2784} INFO - 1 downstream tasks scheduled from follow-on schedule check

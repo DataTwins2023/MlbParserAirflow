@@ -1,0 +1,31 @@
+[2023-09-17T06:38:04.709+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mlb_parser.task_avg_lead_to_sql manual__2023-09-17T06:37:00.526468+00:00 [queued]>
+[2023-09-17T06:38:04.716+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mlb_parser.task_avg_lead_to_sql manual__2023-09-17T06:37:00.526468+00:00 [queued]>
+[2023-09-17T06:38:04.717+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2023-09-17T06:38:04.725+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): task_avg_lead_to_sql> on 2023-09-17 06:37:00.526468+00:00
+[2023-09-17T06:38:04.731+0000] {standard_task_runner.py:57} INFO - Started process 4654 to run task
+[2023-09-17T06:38:04.734+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mlb_parser', 'task_avg_lead_to_sql', 'manual__2023-09-17T06:37:00.526468+00:00', '--job-id', '971', '--raw', '--subdir', 'DAGS_FOLDER/mlb_parser.py', '--cfg-path', '/tmp/tmp1e6_3tzb']
+[2023-09-17T06:38:04.737+0000] {standard_task_runner.py:85} INFO - Job 971: Subtask task_avg_lead_to_sql
+[2023-09-17T06:38:04.769+0000] {task_command.py:415} INFO - Running <TaskInstance: mlb_parser.task_avg_lead_to_sql manual__2023-09-17T06:37:00.526468+00:00 [running]> on host 41ed285d8c3c
+[2023-09-17T06:38:04.817+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andy_hsu' AIRFLOW_CTX_DAG_ID='mlb_parser' AIRFLOW_CTX_TASK_ID='task_avg_lead_to_sql' AIRFLOW_CTX_EXECUTION_DATE='2023-09-17T06:37:00.526468+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-17T06:37:00.526468+00:00'
+[2023-09-17T06:38:04.830+0000] {taskinstance.py:1943} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/mlb_parser.py", line 161, in avg_standing_to_sql
+    avg_data_df.columns = ["Name", "POS", "Team", "G", "AB", "H", "BB", "SO", "OBP", "SLG", "AVG"]
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/core/generic.py", line 6002, in __setattr__
+    return object.__setattr__(self, name, value)
+  File "pandas/_libs/properties.pyx", line 69, in pandas._libs.properties.AxisProperty.__set__
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/core/generic.py", line 730, in _set_axis
+    self._mgr.set_axis(axis, labels)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/core/internals/managers.py", line 225, in set_axis
+    self._validate_set_axis(axis, new_labels)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/core/internals/base.py", line 70, in _validate_set_axis
+    raise ValueError(
+ValueError: Length mismatch: Expected axis has 12 elements, new values have 11 elements
+[2023-09-17T06:38:04.843+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=mlb_parser, task_id=task_avg_lead_to_sql, execution_date=20230917T063700, start_date=20230917T063804, end_date=20230917T063804
+[2023-09-17T06:38:04.853+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 971 for task task_avg_lead_to_sql (Length mismatch: Expected axis has 12 elements, new values have 11 elements; 4654)
+[2023-09-17T06:38:04.868+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-09-17T06:38:04.884+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check

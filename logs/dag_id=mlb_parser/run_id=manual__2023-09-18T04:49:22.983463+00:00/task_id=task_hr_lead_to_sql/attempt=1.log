@@ -1,0 +1,33 @@
+[2023-09-18T04:50:19.874+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mlb_parser.task_hr_lead_to_sql manual__2023-09-18T04:49:22.983463+00:00 [queued]>
+[2023-09-18T04:50:19.880+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mlb_parser.task_hr_lead_to_sql manual__2023-09-18T04:49:22.983463+00:00 [queued]>
+[2023-09-18T04:50:19.881+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2023-09-18T04:50:19.890+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): task_hr_lead_to_sql> on 2023-09-18 04:49:22.983463+00:00
+[2023-09-18T04:50:19.895+0000] {standard_task_runner.py:57} INFO - Started process 14690 to run task
+[2023-09-18T04:50:19.897+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mlb_parser', 'task_hr_lead_to_sql', 'manual__2023-09-18T04:49:22.983463+00:00', '--job-id', '1217', '--raw', '--subdir', 'DAGS_FOLDER/mlb_parser.py', '--cfg-path', '/tmp/tmp0szciquh']
+[2023-09-18T04:50:19.900+0000] {standard_task_runner.py:85} INFO - Job 1217: Subtask task_hr_lead_to_sql
+[2023-09-18T04:50:19.934+0000] {task_command.py:415} INFO - Running <TaskInstance: mlb_parser.task_hr_lead_to_sql manual__2023-09-18T04:49:22.983463+00:00 [running]> on host 41ed285d8c3c
+[2023-09-18T04:50:19.988+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andy_hsu' AIRFLOW_CTX_DAG_ID='mlb_parser' AIRFLOW_CTX_TASK_ID='task_hr_lead_to_sql' AIRFLOW_CTX_EXECUTION_DATE='2023-09-18T04:49:22.983463+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-18T04:49:22.983463+00:00'
+[2023-09-18T04:50:20.011+0000] {logging_mixin.py:151} INFO -              name pos team    g   ab  ...   bb   so    obp    slg  record_date
+0      Matt Olson  1B  ATL  149  564  ...   96  157  0.385  0.612   2023-09-18
+1     Pete Alonso  1B  NYM  141  517  ...   63  132  0.326  0.526   2023-09-18
+2   Shohei Ohtani  DH  LAA  135  497  ...   91  143  0.412  0.654   2023-09-18
+3  Kyle Schwarber  LF  PHI  148  543  ...  119  198  0.345  0.475   2023-09-18
+4    Mookie Betts  RF  LAD  139  539  ...   87  103  0.410  0.599   2023-09-18
+5    Ronald Acuna  RF  ATL  147  597  ...   78   78  0.418  0.586   2023-09-18
+6    Austin Riley  3B  ATL  147  588  ...   52  154  0.339  0.514   2023-09-18
+7     Jorge Soler  DH  MIA  127  469  ...   59  130  0.332  0.520   2023-09-18
+8   Marcell Ozuna  DH  ATL  132  482  ...   52  121  0.338  0.531   2023-09-18
+9       Max Muncy  3B  LAD  123  435  ...   77  140  0.332  0.492   2023-09-18
+
+[10 rows x 12 columns]
+[2023-09-18T04:50:20.031+0000] {logging_mixin.py:151} INFO - An exception occurred: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "mlb_hr_lead_2023_pkey"
+DETAIL:  Key (name, pos, team, record_date)=(Matt Olson, 1B, ATL, 2023-09-18) already exists.
+
+[SQL: INSERT INTO mlb_hr_lead_2023 (name, pos, team, g, ab, hr, rbi, bb, so, obp, slg, record_date) VALUES (%(name)s, %(pos)s, %(team)s, %(g)s, %(ab)s, %(hr)s, %(rbi)s, %(bb)s, %(so)s, %(obp)s, %(slg)s, %(record_date)s)]
+[parameters: ({'name': 'Matt Olson', 'pos': '1B', 'team': 'ATL', 'g': 149, 'ab': 564, 'hr': 52, 'rbi': 129, 'bb': 96, 'so': 157, 'obp': 0.385, 'slg': 0.612, 'record_date': datetime.date(2023, 9, 18)}, {'name': 'Pete Alonso', 'pos': '1B', 'team': 'NYM', 'g': 141, 'ab': 517, 'hr': 45, 'rbi': 112, 'bb': 63, 'so': 132, 'obp': 0.326, 'slg': 0.526, 'record_date': datetime.date(2023, 9, 18)}, {'name': 'Shohei Ohtani', 'pos': 'DH', 'team': 'LAA', 'g': 135, 'ab': 497, 'hr': 44, 'rbi': 95, 'bb': 91, 'so': 143, 'obp': 0.412, 'slg': 0.654, 'record_date': datetime.date(2023, 9, 18)}, {'name': 'Kyle Schwarber', 'pos': 'LF', 'team': 'PHI', 'g': 148, 'ab': 543, 'hr': 44, 'rbi': 97, 'bb': 119, 'so': 198, 'obp': 0.345, 'slg': 0.475, 'record_date': datetime.date(2023, 9, 18)}, {'name': 'Mookie Betts', 'pos': 'RF', 'team': 'LAD', 'g': 139, 'ab': 539, 'hr': 39, 'rbi': 103, 'bb': 87, 'so': 103, 'obp': 0.41, 'slg': 0.599, 'record_date': datetime.date(2023, 9, 18)}, {'name': 'Ronald Acuna', 'pos': 'RF', 'team': 'ATL', 'g': 147, 'ab': 597, 'hr': 37, 'rbi': 98, 'bb': 78, 'so': 78, 'obp': 0.418, 'slg': 0.586, 'record_date': datetime.date(2023, 9, 18)}, {'name': 'Austin Riley', 'pos': '3B', 'team': 'ATL', 'g': 147, 'ab': 588, 'hr': 36, 'rbi': 90, 'bb': 52, 'so': 154, 'obp': 0.339, 'slg': 0.514, 'record_date': datetime.date(2023, 9, 18)}, {'name': 'Jorge Soler', 'pos': 'DH', 'team': 'MIA', 'g': 127, 'ab': 469, 'hr': 36, 'rbi': 73, 'bb': 59, 'so': 130, 'obp': 0.332, 'slg': 0.52, 'record_date': datetime.date(2023, 9, 18)}, {'name': 'Marcell Ozuna', 'pos': 'DH', 'team': 'ATL', 'g': 132, 'ab': 482, 'hr': 35, 'rbi': 82, 'bb': 52, 'so': 121, 'obp': 0.338, 'slg': 0.531, 'record_date': datetime.date(2023, 9, 18)}, {'name': 'Max Muncy', 'pos': '3B', 'team': 'LAD', 'g': 123, 'ab': 435, 'hr': 35, 'rbi': 100, 'bb': 77, 'so': 140, 'obp': 0.332, 'slg': 0.492, 'record_date': datetime.date(2023, 9, 18)})]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+[2023-09-18T04:50:20.033+0000] {logging_mixin.py:151} INFO - job done
+[2023-09-18T04:50:20.033+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-09-18T04:50:20.041+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=mlb_parser, task_id=task_hr_lead_to_sql, execution_date=20230918T044922, start_date=20230918T045019, end_date=20230918T045020
+[2023-09-18T04:50:20.070+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-09-18T04:50:20.081+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check

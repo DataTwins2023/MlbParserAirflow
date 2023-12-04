@@ -1,0 +1,24 @@
+[2023-09-11T06:28:12.008+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mlb_parser.data_clean manual__2023-09-11T06:28:00.685596+00:00 [queued]>
+[2023-09-11T06:28:12.016+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mlb_parser.data_clean manual__2023-09-11T06:28:00.685596+00:00 [queued]>
+[2023-09-11T06:28:12.018+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 6
+[2023-09-11T06:28:12.030+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): data_clean> on 2023-09-11 06:28:00.685596+00:00
+[2023-09-11T06:28:12.038+0000] {standard_task_runner.py:57} INFO - Started process 15763 to run task
+[2023-09-11T06:28:12.042+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mlb_parser', 'data_clean', 'manual__2023-09-11T06:28:00.685596+00:00', '--job-id', '349', '--raw', '--subdir', 'DAGS_FOLDER/mlb_parser.py', '--cfg-path', '/tmp/tmp4tnghaic']
+[2023-09-11T06:28:12.047+0000] {standard_task_runner.py:85} INFO - Job 349: Subtask data_clean
+[2023-09-11T06:28:12.123+0000] {task_command.py:415} INFO - Running <TaskInstance: mlb_parser.data_clean manual__2023-09-11T06:28:00.685596+00:00 [running]> on host 2e8147b3a465
+[2023-09-11T06:28:12.204+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andy_hsu' AIRFLOW_CTX_DAG_ID='mlb_parser' AIRFLOW_CTX_TASK_ID='data_clean' AIRFLOW_CTX_EXECUTION_DATE='2023-09-11T06:28:00.685596+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-11T06:28:00.685596+00:00'
+[2023-09-11T06:28:12.208+0000] {taskinstance.py:1943} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/mlb_parser.py", line 124, in main
+    team = ti.xcom_pull(task_id = 'select_team', key = 'team_parsered')
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/session.py", line 77, in wrapper
+    return func(*args, session=session, **kwargs)
+TypeError: xcom_pull() got an unexpected keyword argument 'task_id'
+[2023-09-11T06:28:12.231+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=mlb_parser, task_id=data_clean, execution_date=20230911T062800, start_date=20230911T062812, end_date=20230911T062812
+[2023-09-11T06:28:12.250+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 349 for task data_clean (xcom_pull() got an unexpected keyword argument 'task_id'; 15763)
+[2023-09-11T06:28:12.300+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-09-11T06:28:12.317+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check

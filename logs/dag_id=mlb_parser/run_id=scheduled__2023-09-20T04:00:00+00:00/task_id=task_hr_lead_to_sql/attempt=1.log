@@ -1,0 +1,35 @@
+[2023-09-21T04:01:08.598+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mlb_parser.task_hr_lead_to_sql scheduled__2023-09-20T04:00:00+00:00 [queued]>
+[2023-09-21T04:01:08.604+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mlb_parser.task_hr_lead_to_sql scheduled__2023-09-20T04:00:00+00:00 [queued]>
+[2023-09-21T04:01:08.605+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2023-09-21T04:01:08.612+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): task_hr_lead_to_sql> on 2023-09-20 04:00:00+00:00
+[2023-09-21T04:01:08.616+0000] {standard_task_runner.py:57} INFO - Started process 67751 to run task
+[2023-09-21T04:01:08.619+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mlb_parser', 'task_hr_lead_to_sql', 'scheduled__2023-09-20T04:00:00+00:00', '--job-id', '1384', '--raw', '--subdir', 'DAGS_FOLDER/mlb_parser_hit.py', '--cfg-path', '/tmp/tmpfkqtno3f']
+[2023-09-21T04:01:08.622+0000] {standard_task_runner.py:85} INFO - Job 1384: Subtask task_hr_lead_to_sql
+[2023-09-21T04:01:08.655+0000] {task_command.py:415} INFO - Running <TaskInstance: mlb_parser.task_hr_lead_to_sql scheduled__2023-09-20T04:00:00+00:00 [running]> on host d98c068596b4
+[2023-09-21T04:01:08.704+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andy_hsu' AIRFLOW_CTX_DAG_ID='mlb_parser' AIRFLOW_CTX_TASK_ID='task_hr_lead_to_sql' AIRFLOW_CTX_EXECUTION_DATE='2023-09-20T04:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-09-20T04:00:00+00:00'
+[2023-09-21T04:01:08.725+0000] {logging_mixin.py:151} INFO -                name pos team    g   ab  ...   bb   so    obp    slg  record_date
+0        Matt Olson  1B  ATL  152  574  ...   99  158  0.386  0.606   2023-09-21
+1    Kyle Schwarber  LF  PHI  151  554  ...  122  204  0.345  0.475   2023-09-21
+2       Pete Alonso  1B  NYM  144  528  ...   64  138  0.324  0.519   2023-09-21
+3     Shohei Ohtani  DH  LAA  135  497  ...   91  143  0.412  0.654   2023-09-21
+4      Ronald Acuna  RF  ATL  150  611  ...   78   79  0.416  0.592   2023-09-21
+5      Mookie Betts  RF  LAD  142  550  ...   88  104  0.409  0.593   2023-09-21
+6       Luis Robert  CF  CWS  142  538  ...   29  170  0.315  0.541   2023-09-21
+7         Max Muncy  3B  LAD  126  445  ...   79  142  0.336  0.497   2023-09-21
+8      Austin Riley  3B  ATL  150  600  ...   54  160  0.340  0.508   2023-09-21
+9       Jorge Soler  DH  MIA  130  479  ...   63  134  0.336  0.518   2023-09-21
+10    Marcell Ozuna  DH  ATL  135  494  ...   53  123  0.343  0.536   2023-09-21
+11    Adolis Garcia  RF  TEX  138  522  ...   59  164  0.324  0.496   2023-09-21
+12    Rafael Devers  3B  BOS  145  552  ...   59  118  0.355  0.516   2023-09-21
+13        Juan Soto  LF   SD  153  536  ...  126  123  0.405  0.504   2023-09-21
+14      Aaron Judge  RF  NYY   98  340  ...   80  122  0.395  0.574   2023-09-21
+15     Corey Seager  SS  TEX  109  441  ...   46   82  0.392  0.637   2023-09-21
+16     Ozzie Albies  2B  ATL  138  552  ...   41  100  0.325  0.500   2023-09-21
+17  Julio Rodriguez  CF  SEA  145  618  ...   44  161  0.342  0.498   2023-09-21
+
+[18 rows x 12 columns]
+[2023-09-21T04:01:08.738+0000] {logging_mixin.py:151} INFO - job done
+[2023-09-21T04:01:08.739+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-09-21T04:01:08.745+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=mlb_parser, task_id=task_hr_lead_to_sql, execution_date=20230920T040000, start_date=20230921T040108, end_date=20230921T040108
+[2023-09-21T04:01:08.792+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-09-21T04:01:08.803+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check
