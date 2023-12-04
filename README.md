@@ -1,4 +1,7 @@
 # MlbParserAirflow
+
+Only mlb_parser_hit.py and mlb_parser_ranking.py are useful in this project, the others are trivial.
+
 ## Description
 For now, this is an airflow DAG used to collect MLB data everyday and created an API to demonstrate the data
 
