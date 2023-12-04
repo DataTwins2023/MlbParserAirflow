@@ -17,3 +17,30 @@ table in the database storing data
 <img width="730" alt="截圖 2023-12-04 下午12 31 33" src="https://github.com/DataTwins2023/MlbParserAirflow/assets/143244871/486623ea-fd50-448a-a053-7126156f2b33">
 
 ER model of these tables
+
+
+screenshot of each table(limit 10)
+<img width="562" alt="截圖 2023-12-04 下午12 56 07" src="https://github.com/DataTwins2023/MlbParserAirflow/assets/143244871/35756b30-8b23-459b-b3f1-6153d1cc80fe">
+
+team grade
+
+<img width="973" alt="截圖 2023-12-04 下午12 57 23" src="https://github.com/DataTwins2023/MlbParserAirflow/assets/143244871/ddffc5a0-673f-4a4b-85ab-2243fa915142">
+
+batter rank order by AVG
+
+<img width="902" alt="截圖 2023-12-04 下午12 57 59" src="https://github.com/DataTwins2023/MlbParserAirflow/assets/143244871/a40a86ee-7ab0-419a-b397-4073d7f6df4d">
+
+batter rank order by HR
+
+<img width="819" alt="截圖 2023-12-04 下午1 00 55" src="https://github.com/DataTwins2023/MlbParserAirflow/assets/143244871/9b8d0016-7175-4fc0-893a-ca0d3af2a533">
+
+raw data of batters without advanced query to get specific result
+
+
+
+
+
+
+
+
+
