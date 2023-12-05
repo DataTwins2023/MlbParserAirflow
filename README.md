@@ -53,6 +53,12 @@ Batter rank order by HR
 Raw data of batters without advanced query to get specific result
 
 
+![截圖 2023-12-05 下午10 12 34](https://github.com/DataTwins2023/MlbParserAirflow/assets/143244871/59e33502-b9cd-4b9e-a127-7f3e96c84f21)
+
+API provided information matching the condition
+
+
+
 
 
 
